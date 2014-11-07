@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 /**
  * Esto es una prueba
+ * lo recibes
  * @author Uri
  */
 public class Derramas {
