@@ -11,7 +11,7 @@ import ioc.eines.Gestoria;
  * @author Lorenzo
  */
 public class GestorDeDatos {
-    
+    //prueba
     
     Gestoria datosGestoria = new Gestoria();
     String cadenaDatos = datosGestoria.importarDades();
