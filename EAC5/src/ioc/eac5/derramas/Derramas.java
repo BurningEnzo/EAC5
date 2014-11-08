@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Derramas;
+package ioc.eac5.derramas;
 
 import java.util.Scanner;
 
@@ -15,9 +15,9 @@ import java.util.Scanner;
  */
 public class Derramas {
 
-    Scanner telclado = new Scanner(System.in);
+    Scanner teclado = new Scanner(System.in);
 
-    public void ModificacionDerramas() {
+    public void modificacionDerramas() {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                             Modificación derramas                                             |");
         System.out.println("-------------------------------------------------------------------------------------------------");
@@ -25,7 +25,7 @@ public class Derramas {
 
     }
 
-    public void ListadoDerramas() {
+    public void listadoDerramas() {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                              Listado derramas                                                 |");
         System.out.println("-------------------------------------------------------------------------------------------------");

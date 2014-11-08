@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package ioc.eac5.interfaz;
 
 import java.util.Scanner;
-import Propietarios.Propietarios;
-import Derramas.Derramas;
+import ioc.eac5.propietarios.Propietarios;
+import ioc.eac5.derramas.Derramas;
 /**
  *
  * @author Uri
@@ -18,7 +18,7 @@ public class Salida {
     Scanner teclado = new Scanner(System.in);
     int opcion;
 
-    public void Propietarios() {
+    public void propietarios() {
         Propietarios imprimir = new Propietarios();
         
         System.out.println("-------------------------------------------------------------------------------------------------");
@@ -31,17 +31,17 @@ public class Salida {
         switch(opcion){
             case 1:
                 if(opcion==1){
-                    imprimir.GestionPropietarios();
+                    imprimir.gestionPropietarios();
                 }
                 break;
             case 2:
                 if(opcion==2){
-                    imprimir.ModificacionGestionPropietarios();
+                    imprimir.modificacionGestionPropietarios();
                 }
                 break;
             case 3:
                 if(opcion==3){
-                    imprimir.ListadoPropietarios();
+                    imprimir.listadoPropietarios();
                 }
                 break;
             case 4:
@@ -53,7 +53,7 @@ public class Salida {
     
     }
 
-    public void Derramas() {
+    public void derramas() {
         Derramas derramas = new Derramas();
         Entrada imprimirEn = new Entrada();
         System.out.println("-------------------------------------------------------------------------------------------------");
@@ -67,12 +67,12 @@ public class Salida {
         switch(opcion){
             case 1:
                 if(opcion==1){
-                    derramas.ModificacionDerramas();
+                    derramas.modificacionDerramas();
                 }
                 break;
             case 2:
                 if(opcion==2){
-                    derramas.ListadoDerramas();
+                    derramas.listadoDerramas();
                 }
                 break;
             case 3:

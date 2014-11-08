@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Propietarios;
+package ioc.eac5.propietarios;
 import ioc.eines.Gestoria;
 import ioc.eac5.gestor.GestorDeDatos;
 
@@ -13,24 +13,24 @@ import ioc.eac5.gestor.GestorDeDatos;
  */
 public class Propietarios {
 
-    public void GestionPropietarios() {
+    public void gestionPropietarios() {
         Gestoria gestoria = new Gestoria();
         GestorDeDatos gestor = new GestorDeDatos();
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                           Gestión de Propietarios                                             |");
         System.out.println("-------------------------------------------------------------------------------------------------");
         String Cadena=gestoria.importarDades();
-        gestor.tratarDatos(Cadena);
+        
     }
 
-    public void ModificacionGestionPropietarios() {
+    public void modificacionGestionPropietarios() {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                   Modificacion gestión propietarios                                           |");
         System.out.println("-------------------------------------------------------------------------------------------------");
 
     }
 
-    public void ListadoPropietarios() {
+    public void listadoPropietarios() {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                               Listado Propietarios                                            |");
         System.out.println("-------------------------------------------------------------------------------------------------");

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package ioc.eac5.interfaz;
 
 import java.util.Scanner;
 
@@ -29,21 +29,18 @@ public class Entrada {
             case 1:
                 if (opcion == 1) {
                     
-                    imprimir.Propietarios();
+                    imprimir.propietarios();
                 }
                 break;
             case 2:
                 if (opcion == 2) {
-                    imprimir.Derramas();
+                    imprimir.derramas();
 
                 }
                 break;
         }
     }
 
-    public static void main(String[] args) {
-        Entrada mostrar = new Entrada();
-        mostrar.menu();
-    }
+    
 
 }

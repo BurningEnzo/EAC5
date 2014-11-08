@@ -14,10 +14,10 @@ public class Vecino {
     String identificador;
     String nombrePiso;
     String nombrePropietario;
-    int telefono;
-    char presencia;
-    double coeficiente;
-    int tipoC; //0 -> exento, 1 -> no exento
-    char cargo; //Cargo que ocupa en la junta
+    String telefono;
+    String presencia;
+    String coeficiente;
+    String tipoC; //0 -> exento, 1 -> no exento
+    String cargo; //Cargo que ocupa en la junta
     
 }
