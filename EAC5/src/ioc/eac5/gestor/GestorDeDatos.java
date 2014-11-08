@@ -46,13 +46,14 @@ public class GestorDeDatos {
             datosVecino[i].presencia=almacenDatosVecino[4].trim();
             datosVecino[i].coeficiente=almacenDatosVecino[5].trim();
             datosVecino[i].tipoC=almacenDatosVecino[6].trim();
-            //datosVecino[i].cargo=almacenDatosVecino[7];
-            
+            if (almacenDatosVecino.length==8){
+             datosVecino[i].cargo=almacenDatosVecino[7].trim();
+            }            
         }
         System.out.println(datosVecino[2].identificador);
         System.out.println(datosVecino[2].presencia);
-        System.out.println(datosVecino[2].coeficiente);
+        System.out.println(datosVecino[22].cargo);
     }
-    
-
+        
 }
+    
