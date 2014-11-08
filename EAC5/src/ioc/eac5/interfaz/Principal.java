@@ -19,7 +19,7 @@ public class Principal {
         GestorDeDatos prueba = new GestorDeDatos();
         
         
-        prueba.tratarDatos();
+        prueba.tratarDatosGestoria();
         
         
         
