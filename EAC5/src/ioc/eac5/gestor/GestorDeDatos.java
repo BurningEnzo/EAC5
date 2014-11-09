@@ -122,6 +122,7 @@ public class GestorDeDatos {
         System.out.println("\n-------------------------\n");
         System.out.println("Informe derrama");
         System.out.println("\n-------------------------\n");
+        
         double derramaA = numero / 25;
         return derramaA;
 
