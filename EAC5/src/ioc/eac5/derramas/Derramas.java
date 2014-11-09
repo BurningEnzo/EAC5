@@ -34,21 +34,23 @@ public class Derramas {
         System.out.println("Descripcion:");
         descripcion = teclado.next();
         if ("A".equalsIgnoreCase(tipoDerrama)) {
+            gestor.tratarDatosGestoria();
             double derramaA = gestor.DerramaA(importe);
-            System.out.println("-----------------");
-            System.out.println("Informe derrama");
-            System.out.println("-----------------");
-            
-            System.out.println("Importe de la derrama: "+importe);
-            System.out.println("Tipo: "+tipoDerrama);
-            System.out.println("Descripcion: "+descripcion);
-            System.out.println("Cada vecino debe abonar " + derramaA);
+            System.out.println(derramaA);
 
         } else if ("B".equalsIgnoreCase(tipoDerrama)) {
-            gestor.DerramaB();
+
+            double derramaB = gestor.DerramaB(importe);
+
+            System.out.println("Importe de la derrama: " + importe);
+            System.out.println("Tipo: " + tipoDerrama);
+            System.out.println("Descripcion: " + descripcion);
+            System.out.println("Cada vecino debe abonar " + derramaB);
 
         } else if ("C".equalsIgnoreCase(tipoDerrama)) {
-
+            gestor.tratarDatosGestoria();
+            double derramaC = gestor.DerramaC(importe);
+            System.out.println(derramaC);
         }
 
     }
