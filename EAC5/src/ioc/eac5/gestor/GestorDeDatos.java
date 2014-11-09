@@ -5,6 +5,7 @@
  */
 package ioc.eac5.gestor;
 import ioc.eines.Gestoria;
+import java.util.Arrays;
 
 /**
  * Clase que gestiona los datos de la aplicación
@@ -12,8 +13,8 @@ import ioc.eines.Gestoria;
  */
 public class GestorDeDatos {
     //Separadores de la cadena proporcionada por la gestoria
-    static final String SEPARADOR_PISOS="#";
-    static final String SEPARADOR_DATOS=";";
+    public static final String SEPARADOR_PISOS="#";
+    public static final String SEPARADOR_DATOS=";";
     
     //Array con los datos de los vecinos
     public Vecino[] datosVecino;
@@ -98,7 +99,7 @@ public class GestorDeDatos {
         switch (orden){
             //Ordenar por orden natural del piso
             case 1:
-                
+                Arrays.sort(datosVecino);
                 break;
             //Ordenar por nombre del pripietario
             case 2:

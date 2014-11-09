@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ioc.eac5.interfaz;
+package ioc.eac5;
 import ioc.eac5.gestor.GestorDeDatos;
 
 /**
@@ -18,12 +18,9 @@ public class Principal {
     public static void main(String[] args) {
         GestorDeDatos prueba = new GestorDeDatos();
         
-        
-        prueba.tratarDatosGestoria();
-       // prueba.modificarCampo("Le",1,"pepito palotes");
         prueba.mostrarListado(1);
         
-        
+
         
         
     }
