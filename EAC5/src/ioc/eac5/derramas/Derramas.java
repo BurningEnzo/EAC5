@@ -33,6 +33,7 @@ public class Derramas {
         tipoDerrama = teclado.next();
         System.out.println("Descripcion:");
         descripcion = teclado.next();
+        
         if ("A".equalsIgnoreCase(tipoDerrama)) {
 
             System.out.println("Importe de la derrama: " + importe);
@@ -60,6 +61,12 @@ public class Derramas {
             double derramaC = gestor.DerramaC(importe);
             System.out.println(derramaC);
         }
+        //Al haber tratado double importe arriba ahora ya podemos pasarlo a string
+        String importeDatos= String.valueOf(importe/10);
+        //Almacenamos los datos introducidos por teclado en una variable String
+        String datos=importeDatos+","+tipoDerrama+","+descripcion+";";
+        
+        System.out.println("Datos para almacenar: "+datos);
 
     }
 
