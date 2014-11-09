@@ -132,10 +132,7 @@ public class GestorDeDatos {
         String nombrePiso;
         double porPiso = 0;
         double derramaA = 0;
-        System.out.println("\n-------------------------\n");
-        System.out.println("Informe derrama");
-        System.out.println("\n-------------------------\n");
-
+ 
         for (int a = 0; a < datosVecino.length; a++) {
             coeficienteProp = Double.parseDouble(datosVecino[a].coeficiente);
             nombrePiso = datosVecino[a].nombrePiso;
@@ -170,10 +167,7 @@ public class GestorDeDatos {
         double derramaC = 0;
         String nombrePiso;
         int tipoC;
-        System.out.println("\n-------------------------\n");
-        System.out.println("Informe derrama");
-        System.out.println("\n-------------------------\n");
-
+      
         for (int c = 0; c < datosVecino.length; c++) {
             coeficienteProp = Double.parseDouble(datosVecino[c].coeficiente);
             nombrePiso = datosVecino[c].nombrePiso;

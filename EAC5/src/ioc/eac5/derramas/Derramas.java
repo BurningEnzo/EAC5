@@ -34,6 +34,10 @@ public class Derramas {
         System.out.println("Descripcion:");
         descripcion = teclado.next();
         if ("A".equalsIgnoreCase(tipoDerrama)) {
+
+            System.out.println("Importe de la derrama: " + importe);
+            System.out.println("Tipo: " + tipoDerrama);
+            System.out.println("Descripcion: " + descripcion);
             gestor.tratarDatosGestoria();
             double derramaA = gestor.DerramaA(importe);
             System.out.println(derramaA);
@@ -48,6 +52,10 @@ public class Derramas {
             System.out.println("Cada vecino debe abonar " + derramaB);
 
         } else if ("C".equalsIgnoreCase(tipoDerrama)) {
+            
+            System.out.println("Importe de la derrama: " + importe);
+            System.out.println("Tipo: " + tipoDerrama);
+            System.out.println("Descripcion: " + descripcion);
             gestor.tratarDatosGestoria();
             double derramaC = gestor.DerramaC(importe);
             System.out.println(derramaC);
