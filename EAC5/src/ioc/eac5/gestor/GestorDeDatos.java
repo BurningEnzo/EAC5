@@ -11,9 +11,12 @@ import ioc.eines.Gestoria;
  * @author Lorenzo
  */
 public class GestorDeDatos {
-    static String SEPARADOR_PISOS="#";
-    static String SEPARADOR_DATOS=";";
+    //Separadores de la cadena proporcionada por la gestoria
+    static final String SEPARADOR_PISOS="#";
+    static final String SEPARADOR_DATOS=";";
     
+    //Array con los datos de los vecinos
+    public Vecino[] datosVecino;
     /**
      * Método que importa los datos de la gestoría y los almacena
      * en el array
@@ -23,17 +26,18 @@ public class GestorDeDatos {
         
         //Se inicializa la clase Gestoria para usar sus métodos
         Gestoria datosGestoria = new Gestoria();
-        String cadenaDatos = datosGestoria.importarDades();       
-        //Se crean almacenes temporales para almacenar los datos a la hora de dividirlos
+        String cadenaDatos = datosGestoria.importarDades(); 
+        //Se hace una primera división de la cadena de la gestoría
+        //Almacenes temporales para almacenar los datos a la hora de dividirlos
         String[] almacenTemporal;
         String[] almacenDatosVecino;
-        //Se hace una primera división de la cadena de la gestoría
         almacenTemporal = cadenaDatos.split(SEPARADOR_PISOS);
         //Se almacena el número de pisos de la comunidad
         int numPisos = Integer.parseInt(almacenTemporal[0]);
         //Se crea un array de objetos Vecino con el número de pisos
-        Vecino[] datosVecino = new Vecino[numPisos];
+        //Vecino[] datosVecino = new Vecino[numPisos];
         //Por cada posición del array datosVecino
+        datosVecino = new Vecino[numPisos];
         for (int i=0; i < datosVecino.length;i++){
             //Se almacenan los datos de cada vecino en un array temporal
             almacenDatosVecino = almacenTemporal[i+1].split(SEPARADOR_DATOS);  
@@ -50,10 +54,66 @@ public class GestorDeDatos {
              datosVecino[i].cargo=almacenDatosVecino[7].trim();
             }            
         }
-        System.out.println(datosVecino[2].identificador);
-        System.out.println(datosVecino[2].presencia);
-        System.out.println(datosVecino[22].cargo);
-    }
         
+    }
+    /**
+     * Método para modificar un campo de cualquier piso
+     * @param identificador Identificador del piso
+     * @param campo Campo a modificar
+     * @param dato Dato modificado
+     */
+    public void modificarCampo(String identificador, int campo, String dato){
+        //Se hace un recorrido por todos los vecinos
+        for (int i=0; i< datosVecino.length;i++){
+            //Si el identificador introducido concuerda con uno de los pisos
+            if(identificador.equalsIgnoreCase(datosVecino[i].identificador)){
+                //Modifica el campo según la opción elegida
+                switch (campo){
+                    case 1:
+                        datosVecino[i].nombrePropietario=dato;
+                        break;
+                    case 2:
+                        datosVecino[i].telefono=dato;
+                        break;
+                    case 3:
+                        datosVecino[i].coeficiente=dato;
+                        break;
+                    case 4:
+                        datosVecino[i].tipoC=dato;
+                        break;
+                    case 5:
+                        datosVecino[i].presencia=dato;
+                        break;
+                    default:
+                        System.out.println("Opción incorrecta.");
+                        break;
+                }
+            } else {
+                //Si el identificador no concuerda con ningún identificador del array muestra un mensaje
+                System.out.println("El identificador "+ identificador+ " no pertenece a ningún piso.");
+            }
+        }
+    }
+    public void mostrarListado(int orden){
+        switch (orden){
+            //Ordenar por orden natural del piso
+            case 1:
+                
+                break;
+            //Ordenar por nombre del pripietario
+            case 2:
+                
+                break;
+            //Ordenar por coeficiente de propiedad
+            case 3:
+                
+                break;
+            //Orden por defecto
+            default:
+                
+                break;
+                
+        }
+    }
 }
     
