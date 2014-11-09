@@ -20,8 +20,8 @@ public class Principal {
         
         
         prueba.tratarDatosGestoria();
-        
-        
+       // prueba.modificarCampo("Le",1,"pepito palotes");
+        prueba.mostrarListado(1);
         
         
         
