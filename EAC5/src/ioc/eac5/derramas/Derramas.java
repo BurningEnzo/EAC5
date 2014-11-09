@@ -64,9 +64,26 @@ public class Derramas {
         //Al haber tratado double importe arriba ahora ya podemos pasarlo a string
         String importeDatos= String.valueOf(importe/10);
         //Almacenamos los datos introducidos por teclado en una variable String
-        String datos=importeDatos+","+tipoDerrama+","+descripcion+";";
+        String datos=importeDatos+","+tipoDerrama+","+descripcion;
+        //System.out.println("\nTabla de datos\n"+datos);
         
-        System.out.println("Datos para almacenar: "+datos);
+       
+        String[]array= datos.split(",");
+        String[][]tablaDatos = new String[array.length][25];
+        int cont=0;
+        System.out.println("Tabla Presupuestos\n");
+        for(int i=0;i<25;i++){
+            for(int j=0;j<3;j++){
+                tablaDatos[j][i]=array[cont];
+                cont++;
+                System.out.println(tablaDatos[j][i]);
+                       
+            }
+        }
+       
+        
+         
+       
 
     }
 
