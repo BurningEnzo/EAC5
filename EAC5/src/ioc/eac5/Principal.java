@@ -5,6 +5,7 @@
  */
 package ioc.eac5;
 import ioc.eac5.gestor.GestorDeDatos;
+import ioc.eac5.interfaz.Entrada;
 
 /**
  * Clase principal que da inicio al programa
@@ -17,8 +18,9 @@ public class Principal {
      */
     public static void main(String[] args) {
         GestorDeDatos prueba = new GestorDeDatos();
-        
-        prueba.mostrarListado(1);
+        Entrada imprimir = new Entrada();
+//        prueba.mostrarListado(1);
+        imprimir.menu();
         
 
         

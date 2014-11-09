@@ -61,22 +61,27 @@ public class Salida {
         System.out.println("-------------------------------------------------------------------------------------------------");
 
         
-        System.out.println("  1- Modificacion   2- Listado   3-Volver atras");
+        System.out.println("1-Añadir derrama   2- Modificacion   3- Listado   4-Volver atras");
         System.out.println("Por favor, seleccione una opción:");
         opcion = teclado.nextInt();
         switch(opcion){
             case 1:
                 if(opcion==1){
-                    derramas.modificacionDerramas();
+                    derramas.añadirDerramas();
                 }
-                break;
+            break;
             case 2:
                 if(opcion==2){
-                    derramas.listadoDerramas();
+                    derramas.modificacionDerramas();
                 }
                 break;
             case 3:
                 if(opcion==3){
+                    derramas.listadoDerramas();
+                }
+                break;
+            case 4:
+                if(opcion==4){
                     imprimirEn.menu();
                 }
                 break;
