@@ -132,6 +132,9 @@ public class GestorDeDatos {
         System.out.println("\n---------------\n");
         System.out.println("Derrama Tipo B");
         System.out.println("\n---------------\n");
+        for(int i=0;i<datosVecino.length;i++){
+            System.out.println(datosVecino[i].coeficiente);
+        }
     }
 
     public void DerramaC() {
