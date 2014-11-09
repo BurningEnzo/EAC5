@@ -116,5 +116,28 @@ public class GestorDeDatos {
                 
         }
     }
+    
+    // Metodo para calcular la division del importe entre los propietarios
+    public double DerramaA(double numero) {
+        System.out.println("\n-------------------------\n");
+        System.out.println("Informe derrama");
+        System.out.println("\n-------------------------\n");
+        double derramaA = numero / 25;
+        return derramaA;
+
+    }
+
+    public void DerramaB() {
+        System.out.println("\n---------------\n");
+        System.out.println("Derrama Tipo B");
+        System.out.println("\n---------------\n");
+    }
+
+    public void DerramaC() {
+        System.out.println("\n---------------\n");
+        System.out.println("Derrama Tipo C");
+        System.out.println("\n---------------\n");
+    }
+
 }
     
