@@ -29,7 +29,11 @@ public class Junta {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                            LISTAR JUNTA ACTUAL                                           |");
         System.out.println("-------------------------------------------------------------------------------------------------");
-     }
+      //  gestor.tratarDatosGestoria();
+       // datosVecino = gestor.cargo(P);
+          
+         //   System.out.println(Presidente); 
+    }
 
      /**
      * Este metodo importa los datos de los propietarios y asigna los cargos teniendo en cuenta el campo N y S que nos indica
