@@ -7,6 +7,7 @@ package ioc.eac5.gestor;
 
 import ioc.eines.Gestoria;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Clase que gestiona los datos de la aplicación
@@ -18,6 +19,12 @@ public class GestorDeDatos {
     //Separadores de la cadena proporcionada por la gestoria
     public static final String SEPARADOR_PISOS = "#";
     public static final String SEPARADOR_DATOS = ";";
+    private Scanner teclado;
+    private int cont;
+    private String[][] matriz;
+    private int importe;
+    private char tipo;
+    private String descripcion;
 
     //Array con los datos de los vecinos
     public Vecino[] datosVecino;
@@ -122,17 +129,86 @@ public class GestorDeDatos {
         }
     }
 
-   /**
-    * Reparto del importe segun el coeficiente de cada propietario
-    * @param numero
-    * @return 
-    */
+    /**
+     * Reparto del importe segun el coeficiente de cada propietario
+     *
+     * @param numero
+     * @return
+     */
+    public void introducirPresupuesto() {
+        teclado = new Scanner(System.in);
+        System.out.println("Cuantos presupuestos introducira?");
+        int presupuestos = teclado.nextInt();
+        matriz = new String[presupuestos][3];
+        System.out.println("Debe introducir los datos del presupuesto segun el orden que le indiquemos a continuacion.");
+        System.out.println("importe/tipo/descripcion");
+        for (int f = 0; f < matriz.length; f++) {
+            System.out.println("----------------");
+            for (int c = 0; c < matriz[f].length; c++) {
+                System.out.println("Ingrese el dato:");
+                matriz[f][c] = teclado.next();
+            }
+        }
+
+    }
+/**
+ * Muestra importe y guarda en variable
+ */
+    public void importe() {
+        System.out.println("IMPORTE\n------------------");
+        for (int f = 0; f < matriz.length; f++) {
+            for (int c = 0; c < matriz[f].length; c=c+3) {
+                importe=Integer.parseInt(matriz[f][c]);
+                cont++;
+                System.out.println("Importe "+cont+"|" +importe+ "|");
+            }
+        }
+    }
+    /**
+     * Muestra tipo derrama y guarda en variable
+     */
+    public void tipoDerrama(){
+        System.out.println("TIPO\n------------------");
+        for (int f = 0; f < matriz.length; f++) {
+            for (int c = 1; c < matriz[f].length; c=c+3) {
+                 tipo=matriz[f][c].charAt(0);
+                cont++;
+                System.out.println("Tipo "+cont+"|" +tipo+ "|");
+            }
+        }
+    }
+    /**
+     * Muestra la descripcion de presupuesto/s y guarda en variable
+     */
+    public void descripcion(){
+         System.out.println("Descripcion\n------------------");
+        for (int f = 0; f < matriz.length; f++) {
+            for (int c = 2; c < matriz[f].length; c=c+3) {
+                 descripcion=matriz[f][c];
+                cont++;
+                System.out.println("descripcion "+cont+"|" +descripcion+ "|");
+            }
+        }
+    }
+/**
+ * Muestra todos los presupuestos introducidos
+ */
+    public void mostrarPresupuesto() {
+        System.out.println("Informe de derrama\n----------------------------");
+        for (int f = 0; f < matriz.length; f++) {
+            for (int c = 0; c < matriz[f].length; c++) {
+                System.out.println("|" + matriz[f][c] + "|");
+            }
+            System.out.println("\n------------------------------------------");
+        }
+    }
+
     public double DerramaA(double numero) {
         double coeficienteProp = 0;
         String nombrePiso;
         double porPiso = 0;
         double derramaA = 0;
- 
+
         for (int a = 0; a < datosVecino.length; a++) {
             coeficienteProp = Double.parseDouble(datosVecino[a].coeficiente);
             nombrePiso = datosVecino[a].nombrePiso;
@@ -143,10 +219,12 @@ public class GestorDeDatos {
         return derramaA;
 
     }
+
     /**
      * Realiza el reparto del importe entre los 25 propietarios
+     *
      * @param numero
-     * @return 
+     * @return
      */
 
     public double DerramaB(double numero) {
@@ -157,17 +235,19 @@ public class GestorDeDatos {
         return derramaB;
 
     }
-/**
- * Segun si estan excemptos o el importe es igual para todos a abonar
- * @param numero
- * @return 
- */
+
+    /**
+     * Segun si estan excemptos o el importe es igual para todos a abonar
+     *
+     * @param numero
+     * @return
+     */
     public double DerramaC(double numero) {
         double coeficienteProp = 0;
         double derramaC = 0;
         String nombrePiso;
         int tipoC;
-      
+
         for (int c = 0; c < datosVecino.length; c++) {
             coeficienteProp = Double.parseDouble(datosVecino[c].coeficiente);
             nombrePiso = datosVecino[c].nombrePiso;

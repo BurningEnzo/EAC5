@@ -17,11 +17,13 @@ import ioc.eac5.gestor.GestorDeDatos;
 
 public class Salida {
     Entrada imprimirEn = new Entrada();
+    Propietarios imprimir = new Propietarios();
+    Derramas derramas = new Derramas();
     Scanner teclado = new Scanner(System.in);
     int opcion;
 
     public void propietarios() {
-        Propietarios imprimir = new Propietarios();
+        
         GestorDeDatos gestoria = new GestorDeDatos();
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                                   Propietarios                                                |");
@@ -59,14 +61,14 @@ public class Salida {
     }
 
     public void derramas() {
-        Derramas derramas = new Derramas();
-        Entrada imprimirEn = new Entrada();
+        
+      
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("| Derramas|");
         System.out.println("-------------------------------------------------------------------------------------------------");
 
         
-        System.out.println("1-Añadir derrama   2- Modificacion   3- Listado   4-Volver atras");
+        System.out.println("1-Añadir derrama   2- Modificacion   3-Listar presupuestos   4-Volver atras");
         System.out.println("Por favor, seleccione una opción:");
         opcion = teclado.nextInt();
         switch(opcion){
@@ -80,9 +82,10 @@ public class Salida {
                     derramas.modificacionDerramas();
                 }
                 break;
+                
             case 3:
                 if(opcion==3){
-                    derramas.listadoDerramas();
+                    derramas.listarPresupuestos();
                 }
                 break;
             case 4:
