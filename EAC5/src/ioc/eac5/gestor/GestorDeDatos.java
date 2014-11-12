@@ -123,24 +123,27 @@ public class GestorDeDatos {
         switch (orden) {
             //Ordenar por orden natural del piso
             case 1:
-                                
-                System.out.println("\nLISTA DE PROPIETARIOS POR ORDEN NATURAL DEL PISO");
+                
+                
+                //for (int i=0; i<datosVecino.length;i++){
+                //    arrayOrden[i][PISO]=i;                
+               // }
+                System.out.println("LISTA DE PROPIETARIOS POR ORDEN NATURAL DEL PISO");
                 System.out.println("------------------------------------------------\n");
 
                 for (int a=0;a<arrayOrden.length;a++){
                     System.out.print("-"+datosVecino[arrayOrden[a][PISO]].nombrePiso+" ("+datosVecino[arrayOrden[a][PISO]].coeficiente+"): "+datosVecino[arrayOrden[a][PISO]].nombrePropietario+" ("+datosVecino[arrayOrden[a][PISO]].telefono+")");
                     if(datosVecino[arrayOrden[a][PISO]].presencia.equalsIgnoreCase("N")){
-                        System.out.println(" -AUSENTE-");
+                        System.out.println(" -AUSENTE");
                     } else {
                         System.out.println();
                     }
                 }
-              
+                mostrarListado(2);
                 break;
             //Ordenar por nombre del pripietario
             case 2:
-                
-                System.out.println("\nLISTA DE PROPIETARIOS POR ORDEN ALFABÉTICO");
+                System.out.println("LISTA DE PROPIETARIOS POR ORDEN ALFABÉTICO");
                 System.out.println("------------------------------------------\n");
                 
                 for(int i=0; i<datosVecino.length-1;i++){
@@ -158,7 +161,7 @@ public class GestorDeDatos {
                 for (int a=0;a<arrayOrden.length;a++){
                     System.out.print("-"+datosVecino[arrayOrden[a][NOMBRE]].nombrePiso+" ("+datosVecino[arrayOrden[a][NOMBRE]].coeficiente+"): "+datosVecino[arrayOrden[a][NOMBRE]].nombrePropietario+" ("+datosVecino[arrayOrden[a][NOMBRE]].telefono+")");
                     if(datosVecino[arrayOrden[a][NOMBRE]].presencia.equalsIgnoreCase("N")){
-                        System.out.println(" -AUSENTE-");
+                        System.out.println(" -AUSENTE");
                     } else {
                         System.out.println();
                     }
@@ -167,30 +170,7 @@ public class GestorDeDatos {
                 break;
             //Ordenar por coeficiente de propiedad
             case 3:
-                
-                System.out.println("\nLISTA DE PROPIETARIOS POR COEFICIENTE DE PROPIEDAD");
-                System.out.println("--------------------------------------------------\n");
-                
-                for(int i=0; i<datosVecino.length-1;i++){
-                    for (int j=i+1;j<datosVecino.length;j++){
-                    
-                        if(datosVecino[arrayOrden[i][COEFICIENTE]].coeficiente.compareToIgnoreCase(datosVecino[arrayOrden[j][COEFICIENTE]].coeficiente)>0){
-                            int aux=arrayOrden[i][COEFICIENTE];
-                            arrayOrden[i][COEFICIENTE]=arrayOrden[j][COEFICIENTE];
-                            arrayOrden[j][COEFICIENTE]=aux;
-                        
-                        }
-                    }
-                }    
-                
-                for (int a=0;a<arrayOrden.length;a++){
-                    System.out.print("-"+datosVecino[arrayOrden[a][NOMBRE]].nombrePiso+" ("+datosVecino[arrayOrden[a][NOMBRE]].coeficiente+"): "+datosVecino[arrayOrden[a][NOMBRE]].nombrePropietario+" ("+datosVecino[arrayOrden[a][NOMBRE]].telefono+")");
-                    if(datosVecino[arrayOrden[a][NOMBRE]].presencia.equalsIgnoreCase("N")){
-                        System.out.println(" -AUSENTE-");
-                    } else {
-                        System.out.println();
-                    }
-                }
+
                 break;
             //Orden por defecto
             default:

@@ -9,7 +9,7 @@ package ioc.eac5.gestor;
  * Clase que gestiona todos y cada uno de los datos relacionados con cada vecino
  * @author Lorenzo
  */
-public class Vecino {
+public class Vecino implements Comparable<Vecino>{
     
     String identificador;
     String nombrePiso;
@@ -20,4 +20,8 @@ public class Vecino {
     String tipoC; //0 -> exento, 1 -> no exento
     String cargo; //Cargo que ocupa en la junta
     
+    @Override
+    public int compareTo(Vecino o){
+        return new String(this.nombrePropietario).compareTo(new String(o.nombrePropietario));
+    }
 }
