@@ -19,9 +19,11 @@ public class Principal {
     public static void main(String[] args) {
         GestorDeDatos prueba = new GestorDeDatos();
         Entrada imprimir = new Entrada();
-//        prueba.mostrarListado(1);
+        
+        //Pruebas
+//        prueba.tratarDatosGestoria();
+//        prueba.mostrarListado(3);
         imprimir.menu();
-        //prueba.tratarDatosGestoria();
         //prueba.DerramaB();
 
         

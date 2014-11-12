@@ -43,11 +43,16 @@ public class Derramas {
             case 2:
                 if (opcion == 2) {
                     System.out.println("------------------------------------------------------------------------------------");
-                    System.out.println("|                                 Listado Presupuestos                                          |");
-                    System.out.println("-------------------------------------------------------------------------------------------------");
+                    System.out.println("|                                 Listado Presupuestos                             |");
+                    System.out.println("------------------------------------------------------------------------------------");
 
                     gestor.mostrarPresupuesto();
 
+                }
+                break;
+            case 3:
+                if(opcion==3){
+                    gestor.mostrarSegunTipo();
                 }
                 break;
         }
