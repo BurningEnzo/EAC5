@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ioc.eac5.derramas;
+
 import ioc.eac5.gestor.GestorDeDatos;
 import ioc.eac5.interfaz.Entrada;
 import ioc.eac5.interfaz.Salida;
@@ -24,8 +25,6 @@ public class Derramas {
     Scanner teclado = new Scanner(System.in);
     GestorDeDatos gestor = new GestorDeDatos();
     Entrada imprimirEn = new Entrada();
-  
-   
 
     public void añadirDerramas() {
         System.out.println("-------------------------------------------------------------------------------------------------");
@@ -34,29 +33,25 @@ public class Derramas {
         gestor.introducirPresupuesto();
         System.out.println("Gracias por su colaboracion");
         System.out.println("Ahora que desea hacer?\nMenu\n1- Modificar presupuesto 2- Listar todos los presupuestos 3- Calcular reparto");
-        opcion= teclado.nextInt();
-        switch(opcion){
+        opcion = teclado.nextInt();
+        switch (opcion) {
             case 1:
-                if(opcion==1){
-                  
-                   
-            
-                   
-                   
+                if (opcion == 1) {
+
                 }
                 break;
             case 2:
-                if(opcion==2){
-                     System.out.println("------------------------------------------------------------------------------------");
-        System.out.println("|                                 Listado Presupuestos                                          |");
-        System.out.println("-------------------------------------------------------------------------------------------------");
-             
-                 gestor.mostrarPresupuesto(); 
-                    
+                if (opcion == 2) {
+                    System.out.println("------------------------------------------------------------------------------------");
+                    System.out.println("|                                 Listado Presupuestos                                          |");
+                    System.out.println("-------------------------------------------------------------------------------------------------");
+
+                    gestor.mostrarPresupuesto();
+
                 }
                 break;
         }
-        
+
 //        System.out.println("Introduzca el importe de la derrama:");
 //        importe = teclado.nextDouble();
 //        System.out.println("Tipo de derrama(A/B/C)");
@@ -113,7 +108,6 @@ public class Derramas {
 //            }
 //            System.out.println();
 //        }
-
     }
 
     public void modificacionDerramas() {
@@ -123,7 +117,8 @@ public class Derramas {
 
         System.out.println("1-Listar presupuestos almacenados    2-Solicitar");
     }
-    public void listarPresupuestos(){
-        
+
+    public void listarPresupuestos() {
+
     }
 }

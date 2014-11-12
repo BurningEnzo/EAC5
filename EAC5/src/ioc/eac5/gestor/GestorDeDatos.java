@@ -6,12 +6,12 @@
 package ioc.eac5.gestor;
 
 import ioc.eines.Gestoria;
-<<<<<<< HEAD
+
 import java.util.Arrays;
 import java.util.Scanner;
-=======
 
->>>>>>> daed667139afcc7451e2d8d43443aa7432383a2e
+
+
 
 /**
  * Clase que gestiona los datos de la aplicación
@@ -22,7 +22,7 @@ public class GestorDeDatos {
     
     //CONSTANTES
     //Separadores de la cadena proporcionada por la gestoria
-<<<<<<< HEAD
+
     public static final String SEPARADOR_PISOS = "#";
     public static final String SEPARADOR_DATOS = ";";
     private Scanner teclado;
@@ -32,9 +32,8 @@ public class GestorDeDatos {
     private char tipo;
     private String descripcion;
 
-=======
-    private static final String SEPARADOR_PISOS = "#";
-    private static final String SEPARADOR_DATOS = ";";
+
+   
     
     //Identificadores del tipo de orden
     private static final int PISO=0;
@@ -42,7 +41,7 @@ public class GestorDeDatos {
     private static final int COEFICIENTE=2;
      
     //VARIABLES
->>>>>>> daed667139afcc7451e2d8d43443aa7432383a2e
+
     //Array con los datos de los vecinos
     public Vecino[] datosVecino;
     //Número de pisos
@@ -224,9 +223,9 @@ public class GestorDeDatos {
  */
     public void importe() {
         System.out.println("IMPORTE\n------------------");
-        for (int f = 0; f < matriz.length; f++) {
-            for (int c = 0; c < matriz[f].length; c=c+3) {
-                importe=Integer.parseInt(matriz[f][c]);
+        for (int a = 0; a < matriz.length; a++) {
+            for (int b = 0; b < matriz[a].length; b=b+3) {
+                importe=Integer.parseInt(matriz[a][b]);
                 cont++;
                 System.out.println("Importe "+cont+"|" +importe+ "|");
             }
@@ -237,9 +236,9 @@ public class GestorDeDatos {
      */
     public void tipoDerrama(){
         System.out.println("TIPO\n------------------");
-        for (int f = 0; f < matriz.length; f++) {
-            for (int c = 1; c < matriz[f].length; c=c+3) {
-                 tipo=matriz[f][c].charAt(0);
+        for (int c = 0; c < matriz.length; c++) {
+            for (int d = 1; d < matriz[c].length; d=d+3) {
+                 tipo=matriz[c][d].charAt(0);
                 cont++;
                 System.out.println("Tipo "+cont+"|" +tipo+ "|");
             }
@@ -250,9 +249,9 @@ public class GestorDeDatos {
      */
     public void descripcion(){
          System.out.println("Descripcion\n------------------");
-        for (int f = 0; f < matriz.length; f++) {
-            for (int c = 2; c < matriz[f].length; c=c+3) {
-                 descripcion=matriz[f][c];
+        for (int e = 0; e < matriz.length; e++) {
+            for (int f = 2; f < matriz[e].length; f=f+3) {
+                 descripcion=matriz[e][f];
                 cont++;
                 System.out.println("descripcion "+cont+"|" +descripcion+ "|");
             }
@@ -263,9 +262,32 @@ public class GestorDeDatos {
  */
     public void mostrarPresupuesto() {
         System.out.println("Informe de derrama\n----------------------------");
-        for (int f = 0; f < matriz.length; f++) {
-            for (int c = 0; c < matriz[f].length; c++) {
-                System.out.println("Importe:\nTipo:\nDescripcion:"+matriz[f][c]);
+//        for (int a = 0; a < matriz.length; a++) {
+//            for (int b = 0; b < matriz[a].length; b=b+3) {
+//                importe=Integer.parseInt(matriz[a][b]);
+//                cont++;
+//                System.out.println("Importe: " +importe+ "");
+//            }
+//        }
+//        for (int c = 0; c < matriz.length; c++) {
+//            for (int d = 1; d < matriz[c].length; d=d+3) {
+//                 tipo=matriz[c][d].charAt(0);
+//                cont++;
+//                System.out.println("Tipo: " +tipo+ "");
+//            }
+//        }
+//        for (int e = 0; e < matriz.length; e++) {
+//            for (int f = 2; f < matriz[e].length; f=f+3) {
+//                 descripcion=matriz[e][f];
+//                cont++;
+//                System.out.println("Descripcion: " +descripcion+ "");
+//            }
+//        }
+//        
+        for (int g = 0; g < matriz.length; g++) {
+            for (int h = 0; h < matriz[g].length; h++) {
+//               System.out.println("Importe:"+importe+"Tipo:"+tipo+"Descripcion:"+descripcion);
+                System.out.println(matriz[g][h]);
             }
             System.out.println("\n------------------------------------------");
         }
