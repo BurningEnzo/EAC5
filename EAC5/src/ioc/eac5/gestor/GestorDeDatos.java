@@ -134,12 +134,12 @@ public class GestorDeDatos {
                 for (int a=0;a<arrayOrden.length;a++){
                     System.out.print("-"+datosVecino[arrayOrden[a][PISO]].nombrePiso+" ("+datosVecino[arrayOrden[a][PISO]].coeficiente+"): "+datosVecino[arrayOrden[a][PISO]].nombrePropietario+" ("+datosVecino[arrayOrden[a][PISO]].telefono+")");
                     if(datosVecino[arrayOrden[a][PISO]].presencia.equalsIgnoreCase("N")){
-                        System.out.println(" -AUSENTE");
+                        System.out.println(" -AUSENTE-");
                     } else {
                         System.out.println();
                     }
                 }
-                mostrarListado(2);
+                
                 break;
             //Ordenar por nombre del pripietario
             case 2:
@@ -161,7 +161,7 @@ public class GestorDeDatos {
                 for (int a=0;a<arrayOrden.length;a++){
                     System.out.print("-"+datosVecino[arrayOrden[a][NOMBRE]].nombrePiso+" ("+datosVecino[arrayOrden[a][NOMBRE]].coeficiente+"): "+datosVecino[arrayOrden[a][NOMBRE]].nombrePropietario+" ("+datosVecino[arrayOrden[a][NOMBRE]].telefono+")");
                     if(datosVecino[arrayOrden[a][NOMBRE]].presencia.equalsIgnoreCase("N")){
-                        System.out.println(" -AUSENTE");
+                        System.out.println(" -AUSENTE-");
                     } else {
                         System.out.println();
                     }
