@@ -292,23 +292,40 @@ public class GestorDeDatos {
             System.out.println("\n------------------------------------------");
         }
     }
-
-    public double DerramaA(double numero) {
-        double coeficienteProp = 0;
-        String nombrePiso;
-        double porPiso = 0;
-        double derramaA = 0;
-
-        for (int a = 0; a < datosVecino.length; a++) {
-            coeficienteProp = Double.parseDouble(datosVecino[a].coeficiente);
-            nombrePiso = datosVecino[a].nombrePiso;
-            derramaA = numero / coeficienteProp;
-            System.out.println(nombrePiso + " " + coeficienteProp + " debes abonar " + (double) Math.round(derramaA) / 100 + "€");
-
+    public void mostrarSegunTipo(){
+        System.out.println("TIPO\n------------------");
+        for (int a = 0; a < matriz.length; a++) {
+            for (int b = 0; b < matriz[a].length; b=b+3) {
+                importe=Integer.parseInt(matriz[a][b]);
+                cont++;
+                
+            }
         }
-        return derramaA;
-
+        for (int c = 0; c < matriz.length; c++) {
+            for (int d = 1; d < matriz[c].length; d=d+3) {
+                 tipo=matriz[c][d].charAt(0);
+                cont++;
+                System.out.println("El tipo de derrama seleccionado es:"+tipo);
+            }
+        }
     }
+
+//    public double DerramaA(double numero) {
+//        double coeficienteProp = 0;
+//        String nombrePiso;
+//        double porPiso = 0;
+//        double derramaA = 0;
+//
+//        for (int a = 0; a < datosVecino.length; a++) {
+//            coeficienteProp = Double.parseDouble(datosVecino[a].coeficiente);
+//            nombrePiso = datosVecino[a].nombrePiso;
+//            derramaA = numero / coeficienteProp;
+//            System.out.println(nombrePiso + " " + coeficienteProp + " debes abonar " + (double) Math.round(derramaA) / 100 + "€");
+//
+//        }
+//        return derramaA;
+//
+//    }
 
     /**
      * Realiza el reparto del importe entre los 25 propietarios
@@ -332,22 +349,22 @@ public class GestorDeDatos {
      * @param numero
      * @return
      */
-    public double DerramaC(double numero) {
-        double coeficienteProp = 0;
-        double derramaC = 0;
-        String nombrePiso;
-        int tipoC;
-
-        for (int c = 0; c < datosVecino.length; c++) {
-            coeficienteProp = Double.parseDouble(datosVecino[c].coeficiente);
-            nombrePiso = datosVecino[c].nombrePiso;
-            tipoC = Integer.parseInt(datosVecino[c].tipoC);
-            if (tipoC == 1) {
-                derramaC = numero / 25;
-                System.out.println(nombrePiso + " " + coeficienteProp + " " + tipoC + " " + derramaC);
-            }
-        }
-        return derramaC;
-    }
+//    public double DerramaC(double numero) {
+//        double coeficienteProp = 0;
+//        double derramaC = 0;
+//        String nombrePiso;
+//        int tipoC;
+//
+//        for (int c = 0; c < datosVecino.length; c++) {
+//            coeficienteProp = Double.parseDouble(datosVecino[c].coeficiente);
+//            nombrePiso = datosVecino[c].nombrePiso;
+//            tipoC = Integer.parseInt(datosVecino[c].tipoC);
+//            if (tipoC == 1) {
+//                derramaC = numero / 25;
+//                System.out.println(nombrePiso + " " + coeficienteProp + " " + tipoC + " " + derramaC);
+//            }
+//        }
+//        return derramaC;
+//    }
 
 }
