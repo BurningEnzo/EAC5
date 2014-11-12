@@ -15,7 +15,7 @@ public class Vecino {
     private String nombrePiso;
     private String nombrePropietario;
     private String telefono;
-    private String presencia;
+    private String presencia; 
     private String coeficiente;
     private String tipoC; //0 -> exento, 1 -> no exento
     private String cargo; //Cargo que ocupa en la junta
