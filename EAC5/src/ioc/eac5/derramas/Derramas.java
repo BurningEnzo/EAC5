@@ -32,23 +32,26 @@ public class Derramas {
         System.out.println("|                            Añadir derramas                                             |");
         System.out.println("-------------------------------------------------------------------------------------------------");
         gestor.introducirPresupuesto();
-        System.out.println("Desea mostrar el informe de derrama introducido?(1- SI/2- NO)");
+        System.out.println("Gracias por su colaboracion");
+        System.out.println("Ahora que desea hacer?\nMenu\n1- Modificar presupuesto 2- Listar todos los presupuestos 3- Calcular reparto");
         opcion= teclado.nextInt();
         switch(opcion){
             case 1:
                 if(opcion==1){
-                   gestor.mostrarPresupuesto(); 
-                   System.out.println("Gracias por su colaboracion");
-                   imprimirEn.menu();
+                  
+                   
+            
                    
                    
                 }
                 break;
             case 2:
                 if(opcion==2){
-                    
-                    System.out.println("Gracias por su colaboracion");
-                    imprimirEn.menu();
+                     System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("|                                 Listado Presupuestos                                          |");
+        System.out.println("-------------------------------------------------------------------------------------------------");
+             
+                 gestor.mostrarPresupuesto(); 
                     
                 }
                 break;

@@ -197,7 +197,7 @@ public class GestorDeDatos {
         System.out.println("Informe de derrama\n----------------------------");
         for (int f = 0; f < matriz.length; f++) {
             for (int c = 0; c < matriz[f].length; c++) {
-                System.out.println("|" + matriz[f][c] + "|");
+                System.out.println("Importe:\nTipo:\nDescripcion:"+matriz[f][c]);
             }
             System.out.println("\n------------------------------------------");
         }
