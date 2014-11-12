@@ -6,8 +6,12 @@
 package ioc.eac5.gestor;
 
 import ioc.eines.Gestoria;
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.Scanner;
+=======
+
+>>>>>>> daed667139afcc7451e2d8d43443aa7432383a2e
 
 /**
  * Clase que gestiona los datos de la aplicación
@@ -15,8 +19,10 @@ import java.util.Scanner;
  * @author Lorenzo
  */
 public class GestorDeDatos {
-
+    
+    //CONSTANTES
     //Separadores de la cadena proporcionada por la gestoria
+<<<<<<< HEAD
     public static final String SEPARADOR_PISOS = "#";
     public static final String SEPARADOR_DATOS = ";";
     private Scanner teclado;
@@ -26,9 +32,23 @@ public class GestorDeDatos {
     private char tipo;
     private String descripcion;
 
+=======
+    private static final String SEPARADOR_PISOS = "#";
+    private static final String SEPARADOR_DATOS = ";";
+    
+    //Identificadores del tipo de orden
+    private static final int PISO=0;
+    private static final int NOMBRE=1;
+    private static final int COEFICIENTE=2;
+     
+    //VARIABLES
+>>>>>>> daed667139afcc7451e2d8d43443aa7432383a2e
     //Array con los datos de los vecinos
     public Vecino[] datosVecino;
-
+    //Número de pisos
+    private int numPisos=0;
+    public int [][] arrayOrden;
+    
     /**
      * Método que importa los datos de la gestoría y los almacena en el array
      */
@@ -38,16 +58,16 @@ public class GestorDeDatos {
         Gestoria datosGestoria = new Gestoria();
         String cadenaDatos = datosGestoria.importarDades();
         //Se hace una primera división de la cadena de la gestoría
-        //Almacenes temporales para almacenar los datos a la hora de dividirlos
+        //Se crean lmacenes temporales para almacenar los datos a la hora de dividirlos
         String[] almacenTemporal;
         String[] almacenDatosVecino;
         almacenTemporal = cadenaDatos.split(SEPARADOR_PISOS);
         //Se almacena el número de pisos de la comunidad
-        int numPisos = Integer.parseInt(almacenTemporal[0]);
-        //Se crea un array de objetos Vecino con el número de pisos
-        //Vecino[] datosVecino = new Vecino[numPisos];
-        //Por cada posición del array datosVecino
+        numPisos = Integer.parseInt(almacenTemporal[0]);
+        arrayOrden = new int [numPisos][3];
+        //Se inicializa el array datosVecino con el número de pisos
         datosVecino = new Vecino[numPisos];
+        //Se recorre cada posición del array
         for (int i = 0; i < datosVecino.length; i++) {
             //Se almacenan los datos de cada vecino en un array temporal
             almacenDatosVecino = almacenTemporal[i + 1].split(SEPARADOR_DATOS);
@@ -62,9 +82,15 @@ public class GestorDeDatos {
             datosVecino[i].tipoC = almacenDatosVecino[6].trim();
             if (almacenDatosVecino.length == 8) {
                 datosVecino[i].cargo = almacenDatosVecino[7].trim();
+            } else {
+                datosVecino[i].cargo = null;
             }
         }
-
+        for (int i=0; i<datosVecino.length;i++){
+                    arrayOrden[i][PISO]=i;
+                    arrayOrden[i][NOMBRE]=i;
+                    arrayOrden[i][COEFICIENTE]=i;
+        }
     }
 
     /**
@@ -108,13 +134,55 @@ public class GestorDeDatos {
     }
 
     public void mostrarListado(int orden) {
+        //Se crea un array de índices para los diferentes tipos de ordenamiento
+        
+        
         switch (orden) {
             //Ordenar por orden natural del piso
             case 1:
-                Arrays.sort(datosVecino);
+                
+                
+                //for (int i=0; i<datosVecino.length;i++){
+                //    arrayOrden[i][PISO]=i;                
+               // }
+                System.out.println("LISTA DE PROPIETARIOS POR ORDEN NATURAL DEL PISO");
+                System.out.println("------------------------------------------------\n");
+
+                for (int a=0;a<arrayOrden.length;a++){
+                    System.out.print("-"+datosVecino[arrayOrden[a][PISO]].nombrePiso+" ("+datosVecino[arrayOrden[a][PISO]].coeficiente+"): "+datosVecino[arrayOrden[a][PISO]].nombrePropietario+" ("+datosVecino[arrayOrden[a][PISO]].telefono+")");
+                    if(datosVecino[arrayOrden[a][PISO]].presencia.equalsIgnoreCase("N")){
+                        System.out.println(" -AUSENTE-");
+                    } else {
+                        System.out.println();
+                    }
+                }
+                
                 break;
             //Ordenar por nombre del pripietario
             case 2:
+                System.out.println("LISTA DE PROPIETARIOS POR ORDEN ALFABÉTICO");
+                System.out.println("------------------------------------------\n");
+                
+                for(int i=0; i<datosVecino.length-1;i++){
+                    for (int j=i+1;j<datosVecino.length;j++){
+                    
+                        if(datosVecino[arrayOrden[i][NOMBRE]].nombrePropietario.compareToIgnoreCase(datosVecino[arrayOrden[j][NOMBRE]].nombrePropietario)>0){
+                            int aux=arrayOrden[i][NOMBRE];
+                            arrayOrden[i][NOMBRE]=arrayOrden[j][NOMBRE];
+                            arrayOrden[j][NOMBRE]=aux;
+                        
+                        }
+                    }
+                }    
+                
+                for (int a=0;a<arrayOrden.length;a++){
+                    System.out.print("-"+datosVecino[arrayOrden[a][NOMBRE]].nombrePiso+" ("+datosVecino[arrayOrden[a][NOMBRE]].coeficiente+"): "+datosVecino[arrayOrden[a][NOMBRE]].nombrePropietario+" ("+datosVecino[arrayOrden[a][NOMBRE]].telefono+")");
+                    if(datosVecino[arrayOrden[a][NOMBRE]].presencia.equalsIgnoreCase("N")){
+                        System.out.println(" -AUSENTE-");
+                    } else {
+                        System.out.println();
+                    }
+                }
 
                 break;
             //Ordenar por coeficiente de propiedad
