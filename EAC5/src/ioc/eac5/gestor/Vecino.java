@@ -15,12 +15,12 @@ public class Vecino {
     private String nombrePiso;
     private String nombrePropietario;
     private String telefono;
-    private String presencia; 
+    private String presencia; //N -> ausente, S -> presente
     private String coeficiente;
     private String tipoC; //0 -> exento, 1 -> no exento
     private String cargo; //Cargo que ocupa en la junta
     
-    
+    //Clases para acceder y modificar los datos de Vecino
     public String getIdentificador(){
         return identificador;
     }

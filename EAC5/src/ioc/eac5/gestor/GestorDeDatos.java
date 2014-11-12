@@ -16,17 +16,11 @@ import java.util.Scanner;
 public class GestorDeDatos {
     
     //CONSTANTES
+    
     //Separadores de la cadena proporcionada por la gestoria
-
     public static final String SEPARADOR_PISOS = "#";
     public static final String SEPARADOR_DATOS = ";";
-    private Scanner teclado;
-    private int cont;
-    private String[][] matriz;
-    private int importe;
-    private char tipo;
-    private String descripcion;
-    
+       
     //Identificadores del tipo de orden
     private static final int PISO=0;
     private static final int NOMBRE=1;
@@ -38,7 +32,15 @@ public class GestorDeDatos {
     public Vecino[] datosVecino;
     //Número de pisos
     private int numPisos=0;
+    //Array de ordenación
     public int [][] arrayOrden;
+    
+    private Scanner teclado;
+    private int cont;
+    private String[][] matriz;
+    private int importe;
+    private char tipo;
+    private String descripcion;
     
     /**
      * Método que importa los datos de la gestoría y los almacena en el array
@@ -49,7 +51,7 @@ public class GestorDeDatos {
         Gestoria datosGestoria = new Gestoria();
         String cadenaDatos = datosGestoria.importarDades();
         //Se hace una primera división de la cadena de la gestoría
-        //Se crean lmacenes temporales para almacenar los datos a la hora de dividirlos
+        //Se crean almacenes temporales para almacenar los datos a la hora de dividirlos
         String[] almacenTemporal;
         String[] almacenDatosVecino;
         almacenTemporal = cadenaDatos.split(SEPARADOR_PISOS);
@@ -130,15 +132,18 @@ public class GestorDeDatos {
             }
         }
     }
-
+    
+    /**
+     * Método que muestra el listado de pisos por el orden especificado
+     * 
+     * @param orden Tipo de ordenación
+     */
     public void mostrarListado(int orden) {
-        //Se crea un array de índices para los diferentes tipos de ordenamiento
-        
-        
+              
         switch (orden) {
+            
             //Ordenar por orden natural del piso
             case 1:
-                
                 
                 System.out.println("\nLISTA DE PROPIETARIOS POR ORDEN NATURAL DEL PISO");
                 System.out.println("------------------------------------------------\n");
@@ -153,6 +158,7 @@ public class GestorDeDatos {
                 }
                 
                 break;
+                
             //Ordenar por nombre del pripietario
             case 2:
                 System.out.println("\nLISTA DE PROPIETARIOS POR ORDEN ALFABÉTICO");
@@ -180,6 +186,7 @@ public class GestorDeDatos {
                 }
 
                 break;
+                
             //Ordenar por coeficiente de propiedad
             case 3:
                 
@@ -211,9 +218,19 @@ public class GestorDeDatos {
                 break;
             //Orden por defecto
             default:
+                
+                System.out.println("\nLISTA DE PROPIETARIOS POR ORDEN NATURAL DEL PISO");
+                System.out.println("------------------------------------------------\n");
 
+                for (int a=0;a<arrayOrden.length;a++){
+                    System.out.print("-"+datosVecino[arrayOrden[a][PISO]].getNombrePiso()+"\t("+datosVecino[arrayOrden[a][PISO]].getCoeficiente()+"): "+datosVecino[arrayOrden[a][PISO]].getNombrePropietario()+" ("+datosVecino[arrayOrden[a][PISO]].getTelefono()+")");
+                    if(datosVecino[arrayOrden[a][PISO]].getPresencia().equalsIgnoreCase("N")){
+                        System.out.println(" -AUSENTE-");
+                    } else {
+                        System.out.println();
+                    }
+                }
                 break;
-
         }
     }
 
