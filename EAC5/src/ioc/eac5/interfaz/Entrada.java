@@ -40,7 +40,8 @@ public class Entrada {
 
                 break;
             case 3:
-                
+                    imprimir.cabeceraMenuJunta();
+                    imprimir.menuJunta();
                 break;
                 
             case 4:    
