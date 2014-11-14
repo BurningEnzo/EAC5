@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package ioc.eac5;
-import ioc.eac5.gestor.GestorDeDatos;
-import ioc.eac5.interfaz.Entrada;
-
+import ioc.eac5.interfaz.Salida;
+//import ioc.eac5.gestor.GestorDeDatos;
 /**
  * Clase principal que da inicio al programa
  * @author Lorenzo
@@ -17,17 +16,17 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GestorDeDatos prueba = new GestorDeDatos();
-        Entrada imprimir = new Entrada();
-        
+
+     //   GestorDeDatos prueba = new GestorDeDatos();
         //Pruebas
         //prueba.tratarDatosGestoria();
+        //imprimir.mostrarPropietario("LE", 0);
         //prueba.mostrarListado(3);
-        imprimir.menu();
+        //imprimir.bienvenida();
+        Salida.menuPrincipal();
         //prueba.DerramaB();
-
-        
-        
+    
     }
+    
     
 }

@@ -6,147 +6,127 @@
 package ioc.eac5.interfaz;
 
 import java.util.Scanner;
-import ioc.eac5.propietarios.Propietarios;
-import ioc.eac5.derramas.Derramas;
 import ioc.eac5.gestor.GestorDeDatos;
 
 /**
  *
  * @author Uri
  */
-
 public class Salida {
-    Entrada imprimirEn = new Entrada();
-    Propietarios imprimir = new Propietarios();
-    Derramas derramas = new Derramas();
+
+    static Entrada solicitar = new Entrada();
+
     Scanner teclado = new Scanner(System.in);
+    //static GestorDeDatos gestor = new GestorDeDatos();
+
     int opcion;
-    boolean importado=false;
-    boolean correcto=false;
-    
-    public void bienvenida() {
-        
+
+    public static void bienvenida() {
+
         System.out.println("Bienvenido/a al programa de gestión de la comunidad\n"
-                            +"\nEl programa permite gestionar los propietarios de la comunidad,\n"
-                            +"gestionar las derramas y los cargos de la junta");
+                + "\nEl programa permite gestionar los propietarios de la comunidad,\n"
+                + "gestionar las derramas y los cargos de la junta");
     }
-    
-    public void cabeceraMenuPropietarios(){
+
+    public static void despedida() {
+
+        System.out.println("Muchas gracias por usar nuestro programa.");
+    }
+
+    public static void menuPrincipal() {
+
+        System.out.println("-----------------------------------------------");
+        System.out.println("                Menú principal");
+        System.out.println("-----------------------------------------------");
+        System.out.println("1) Gestión de propietarios");
+        System.out.println("2) Gestion de derramas");
+        System.out.println("3) Gestión de cargos de la junta");
+        System.out.println("4) Salir del programa");
+        System.out.println("-----------------------------------------------");
+        System.out.print("Por favor, seleccione una opción: ");
+        solicitar.opcionesMenuPrincipal();
+
+    }
+
+    //Menús de: 1) Gestión de propietarios
+    public static void cabeceraMenuPropietarios() {
         System.out.println("-----------------------------------------------");
         System.out.println("                Propietarios");
         System.out.println("-----------------------------------------------");
     }
-    
-    
-    
-    public void menuPropietarios() {
-        
-        GestorDeDatos gestoria = new GestorDeDatos();
-        
-        
-        //System.out.println("  1- Importar datos desde la gestoria  2- Modificacion gestión propietarios   3- Listado datos propietarios   4-Volver atras");
+
+    public static void menuPropietarios() {
+
         System.out.println("1) Importar datos desde la gestoría");
         System.out.println("2) Modificar datos de propietario");
         System.out.println("3) Listado de propietarios");
         System.out.println("4) Volver al menú anterior");
-        
         System.out.print("\nPor favor, seleccione una opción: ");
-        opcion = teclado.nextInt();
-        switch(opcion){
-            case 1:
-                if (!importado){
-                    //imprimir.gestionPropietarios();
-                    gestoria.tratarDatosGestoria();
-                    importado=true;
-                    System.out.println("Datos importados correctamente.\n");
-                    menuPropietarios();
-                } else {
-                    System.out.println("Los datos ya han sido importados previamente.");
-                    menuPropietarios();
-                }
-                break;
-            case 2:
-                
-                if (importado){
-                    imprimir.modificacionGestionPropietarios();
-                } else {
-                    System.out.println("Por favor, primero importe los datos de la gestoría.");
-                    menuPropietarios();
-                }
-                    
-                
-                break;
-            case 3:
-          
-                    imprimir.listadoPropietarios();
-                
-                break;
-            case 4:
-               
-                    imprimirEn.menu();
-                
-        }
-       
-    
+        solicitar.opcionesMenuPropietarios();
+
     }
-    
-    public void cabeceraMenuDerramas() {
+
+    public static void mostrarPropietario(String identificador, int i) {
+        System.out.println("\n       Detalle de datos del propietario");
+        System.out.println("-----------------------------------------------");
+        System.out.println(GestorDeDatos.datosVecino[i].getNombrePiso());
+        System.out.println("\t 1)Nombre del propietario: " + GestorDeDatos.datosVecino[i].getNombrePropietario());
+        System.out.println("\t 2)Teléfono: " + GestorDeDatos.datosVecino[i].getTelefono());
+        System.out.println("\t 3)Coeficiente: " + GestorDeDatos.datosVecino[i].getCoeficiente());
+        if (GestorDeDatos.datosVecino[i].getTipoC().equalsIgnoreCase("1")) {
+            System.out.println("\t 4)¿Exento de gastos tipo C?: No");
+        } else if (GestorDeDatos.datosVecino[i].getTipoC().equalsIgnoreCase("0")) {
+            System.out.println("\t 4)¿Exento de gastos tipo C?: Sí");
+        }
+
+        if (GestorDeDatos.datosVecino[i].getPresencia().equalsIgnoreCase("N")) {
+            System.out.println("\t 5)¿El propietario está ausente?: Sí");
+        } else if (GestorDeDatos.datosVecino[i].getPresencia().equalsIgnoreCase("S")) {
+            System.out.println("\t 5)¿El propietario está ausente?: No");
+        }
+        System.out.println("\t 6)Cancelar");
+    }
+
+    public static void consultaPropietarios() {
+        System.out.println("1) Ordenar por el orden natural del piso");
+        System.out.println("2) Ordenar alfabéticamente por el nombre del propietario");
+        System.out.println("3) Ordenar por coeficiente de propiedad");
+        System.out.println("4) Volver al menú anterior");
+        System.out.print("\nPor favor, seleccione una opción: ");
+    }
+
+    //Menús de: 2) Gestión de derramas
+    public static void cabeceraMenuDerramas() {
         System.out.println("-----------------------------------------------");
         System.out.println("                   Derramas");
         System.out.println("-----------------------------------------------");
     }
-    
-    
-    
-    public void menuDerramas() {
-                
+
+    public static void menuDerramas() {
+
         System.out.println("1) Añadir derrama");
         System.out.println("2) Modificar derrama existente");
         System.out.println("3) Listar derramas");
         System.out.println("4) Volver al menú anterior");
         System.out.print("Por favor, seleccione una opción:");
-        
-        do {
-            correcto=teclado.hasNextInt();
-            if(correcto){
-                opcion = teclado.nextInt();
-                
-            } else {
-                System.out.println("Por favor, introduzca una opción válida");
-                teclado.next();
-            }  
-        } while (!correcto);
-        
-        switch(opcion){
-            case 1:
-            
-                derramas.añadirDerramas();
-                
-                break;
-                
-            case 2:
-                
-                derramas.modificacionDerramas();
-                
-                break;
-                
-            case 3:
-           
-                derramas.listarPresupuestos();
-                
-                break;
-                
-            case 4:
-              
-                imprimirEn.menu();
-                
-                break;
-            default:
-                
-                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
-                menuDerramas();
-                break;
-                
-        }
+        solicitar.opcionesMenuDerramas();
+
+    }
+
+    public static void cabeceraMenuCargos() {
+        System.out.println("-----------------------------------------------");
+        System.out.println("                   Cargos");
+        System.out.println("-----------------------------------------------");
+
+    }
+
+    public static void menuCargos() {
+
+        System.out.println("1) Listar la junta actual");
+        System.out.println("2) Renovar cargos de la junta");
+        System.out.println("3) Sustituir cargo de la junta");
+        System.out.println("4) Volver al menú anterior");
+        System.out.print("Por favor, seleccione una opción:");
+        solicitar.opcionesMenuCargos();
     }
 }

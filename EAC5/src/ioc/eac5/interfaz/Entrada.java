@@ -6,6 +6,7 @@
 package ioc.eac5.interfaz;
 
 import java.util.Scanner;
+import ioc.eac5.gestor.GestorDeDatos;
 
 /**
  *
@@ -14,47 +15,377 @@ import java.util.Scanner;
 public class Entrada {
 
     Scanner teclado = new Scanner(System.in);
+    //   GestorDeDatos gestor = new GestorDeDatos();
     int opcion;
+    String identificadorElegido;
+    private boolean importado = false;
 
-    public void menu() {
-        Salida imprimir = new Salida();
-        System.out.println("-----------------------------------------------");
-        System.out.println("                Menú principal");
-        System.out.println("-----------------------------------------------");
-        System.out.println("1) Gestión de propietarios");
-        System.out.println("2) Gestion de derramas");
-        System.out.println("3) Gestión de cargos de la junta");
-        System.out.println("4) Salir del programa");
-        System.out.println("-----------------------------------------------");
-        System.out.print("Por favor, seleccione una opción: ");
-        opcion = teclado.nextInt();
+    public void opcionesMenuPrincipal() {
+
+        boolean correcto = false;
+
+        do {
+            correcto = teclado.hasNextInt();
+            if (correcto) {
+                opcion = teclado.nextInt();
+
+            } else {
+                System.out.println("Por favor, introduzca una opción válida");
+                teclado.next();
+            }
+        } while (!correcto);
+
         switch (opcion) {
             case 1:
-                    imprimir.cabeceraMenuPropietarios();
-                    imprimir.menuPropietarios();
-                
+                Salida.cabeceraMenuPropietarios();
+                Salida.menuPropietarios();
+
                 break;
             case 2:
-                    imprimir.cabeceraMenuDerramas();
-                    imprimir.menuDerramas();
+                Salida.cabeceraMenuDerramas();
+                Salida.menuDerramas();
 
                 break;
             case 3:
-                
+                Salida.cabeceraMenuCargos();
+                Salida.menuCargos();
                 break;
-                
-            case 4:    
-                
-                
+
+            case 4:
+                Salida.despedida();
                 break;
             default:
-                
+
                 System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
-                menu();
+                opcionesMenuPrincipal();
                 break;
         }
     }
 
-    
+    public void opcionesMenuPropietarios() {
 
+        boolean correcto;
+        do {
+            correcto = teclado.hasNextInt();
+            if (correcto) {
+                opcion = teclado.nextInt();
+
+            } else {
+                System.out.println("Por favor, introduzca una opción válida");
+                teclado.next();
+            }
+        } while (!correcto);
+
+        switch (opcion) {
+            case 1:
+                if (!importado) {
+
+                    GestorDeDatos.tratarDatosGestoria();
+                    importado = true;
+                    System.out.println("Datos importados correctamente.\n");
+                    Salida.menuPropietarios();
+                } else {
+                    System.out.println("Los datos ya han sido importados previamente.");
+                    Salida.menuPropietarios();
+                }
+                break;
+            case 2:
+
+                if (importado) {
+                    int i;
+                    boolean preguntar = true;
+
+                    System.out.print("Por favor, introduzca el identificador del piso a modificar: ");
+                    do {
+
+                        identificadorElegido = teclado.nextLine();
+
+                        for (i = 0; i < GestorDeDatos.datosVecino.length; i++) {
+
+                            if (identificadorElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getIdentificador())) {
+                                Salida.mostrarPropietario(identificadorElegido, i);
+
+                                preguntar = false;
+
+                            }
+
+                        }
+
+                    } while (preguntar);
+                    solicitarDatosModificacion(identificadorElegido, i);
+                }
+                break;
+
+            case 3:
+                //Ordenacion
+                Salida.consultaPropietarios();
+                int orden = 0;
+
+                correcto = false;
+
+                do {
+                    correcto = teclado.hasNextInt();
+                    if (correcto) {
+                        orden = teclado.nextInt();
+
+                    } else {
+                        System.out.println("Por favor, introduzca una opción válida");
+                        teclado.next();
+                    }
+                } while (!correcto);
+                GestorDeDatos.mostrarListado(orden);
+                /*switch (orden) {
+                 case 1:
+                 GestorDeDatos.mostrarListado(orden);
+                 break;
+                 case 2:
+
+                 break;
+                 case 3:
+
+                 break;
+
+                 case 4:
+
+                 break;
+                 default:
+
+                 System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+
+                 break;
+                 }*/
+
+                break;
+            case 4:
+
+                opcionesMenuPrincipal();
+            default:
+
+                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+                opcionesMenuPropietarios();
+                break;
+
+        }
+    }
+
+    public void solicitarDatosModificacion(String identificador, int posicion) {
+        boolean correcto;
+
+        System.out.print("Elija el campo a modificar (1-5) o (6) para cancelar: ");
+        do {
+
+            correcto = teclado.hasNextInt();
+            if (correcto) {
+                opcion = teclado.nextInt();
+
+            } else {
+                System.out.println("Por favor, introduzca una opción válida");
+                teclado.nextLine();
+            }
+        } while (!correcto);
+
+        switch (opcion) {
+            case 1:
+
+                String nuevoNombre = "";
+                System.out.print("Por favor, introduzca el nuevo nombre: ");
+
+                boolean preguntar = true;
+                while (preguntar) {
+                    teclado.nextLine();
+                    nuevoNombre = teclado.nextLine();
+
+                    preguntar = false;
+
+                }
+
+                GestorDeDatos.modificarCampo(identificador, opcion, nuevoNombre);
+
+                break;
+
+            case 2:
+
+                String nuevoTelefono = "";
+                System.out.print("Por favor, introduzca el nuevo teléfono: ");
+
+                preguntar = true;
+                while (preguntar) {
+                    teclado.nextLine();
+                    nuevoTelefono = teclado.nextLine();
+
+                    preguntar = false;
+
+                }
+
+                GestorDeDatos.modificarCampo(identificador, opcion, nuevoTelefono);
+                break;
+
+            case 3:
+
+                double nuevoCoeficiente = 0;
+                System.out.print("Por favor, introduzca el nuevo coeficiente: ");
+
+                preguntar = true;
+                while (preguntar) {
+
+                    correcto = false;
+                    do {
+                        correcto = teclado.hasNextDouble();
+                        if (correcto) {
+                            nuevoCoeficiente = teclado.nextDouble();
+
+                        } else {
+                            System.out.println("Dato incorrecto.");
+                            teclado.nextLine();
+                        }
+                    } while (!correcto);
+
+                    preguntar = false;
+
+                }
+
+                GestorDeDatos.modificarCampo(identificador, opcion, String.valueOf(nuevoCoeficiente));
+                break;
+
+            case 4:
+                char nuevoTipoC;
+                System.out.print("¿El propietario está exento de gastos de tipo C? (S/N): ");
+
+                preguntar = true;
+                while (preguntar) {
+
+                    correcto = teclado.hasNext();
+                    if (correcto) {
+                        nuevoTipoC = teclado.next().charAt(0);
+
+                        if (Character.toLowerCase(nuevoTipoC) == 's') {
+                            GestorDeDatos.modificarCampo(identificador, opcion, "0");
+                        } else if (Character.toLowerCase(nuevoTipoC) == 'n') {
+                            GestorDeDatos.modificarCampo(identificador, opcion, "1");
+                        }
+
+                    }
+
+                    preguntar = false;
+
+                }
+
+                break;
+
+            case 5:
+                char nuevaPresencia;
+                System.out.print("¿El propietario está ausente? (S/N): ");
+
+                preguntar = true;
+                while (preguntar) {
+
+                    correcto = teclado.hasNext();
+                    if (correcto) {
+                        nuevaPresencia = teclado.next().charAt(0);
+
+                        if (Character.toLowerCase(nuevaPresencia) == 's') {
+                            GestorDeDatos.modificarCampo(identificador, opcion, "N");
+                        } else if (Character.toLowerCase(nuevaPresencia) == 'n') {
+                            GestorDeDatos.modificarCampo(identificador, opcion, "S");
+                        }
+
+                    }
+
+                    preguntar = false;
+
+                }
+                break;
+
+            case 6:
+                Salida.cabeceraMenuPropietarios();
+                Salida.menuPropietarios();
+                break;
+            default:
+
+                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+
+        }
+
+    }
+
+    public void opcionesMenuDerramas() {
+
+        boolean correcto;
+        do {
+            correcto = teclado.hasNextInt();
+            if (correcto) {
+                opcion = teclado.nextInt();
+
+            } else {
+                System.out.println("Por favor, introduzca una opción válida");
+                teclado.next();
+            }
+        } while (!correcto);
+
+        switch (opcion) {
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+
+                break;
+            default:
+
+                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+                opcionesMenuDerramas();
+                break;
+
+        }
+
+    }
+
+    public void opcionesMenuCargos() {
+
+        boolean correcto;
+
+        do {
+            correcto = teclado.hasNextInt();
+            if (correcto) {
+                opcion = teclado.nextInt();
+
+            } else {
+                System.out.println("Por favor, introduzca una opción válida");
+                teclado.next();
+            }
+        } while (!correcto);
+
+        switch (opcion) {
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+
+                break;
+            default:
+
+                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+                opcionesMenuCargos();
+                break;
+
+        }
+
+    }
 }
