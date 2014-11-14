@@ -1,3 +1,8 @@
+
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +14,8 @@ import java.util.Scanner;
 import ioc.eac5.propietarios.Propietarios;
 import ioc.eac5.derramas.Derramas;
 import ioc.eac5.gestor.GestorDeDatos;
+import ioc.eac5.junta.Junta;
+
 
 /**
  *
@@ -20,6 +27,7 @@ public class Salida {
     Propietarios imprimir = new Propietarios();
     Derramas derramas = new Derramas();
     Scanner teclado = new Scanner(System.in);
+    Junta junta = new Junta();
     int opcion;
     boolean importado=false;
     boolean correcto=false;
@@ -149,4 +157,61 @@ public class Salida {
                 
         }
     }
+    public void cabeceraMenuJunta(){
+        System.out.println("-----------------------------------------------");
+        System.out.println("                Cargos de la junta");
+        System.out.println("-----------------------------------------------");
+    }
+
+  public void menuJunta(){
+                
+        System.out.println("1) Lista junta actual");
+        System.out.println("2) Renovar cargos de la junta");
+        System.out.println("3) Substituir cargos");
+        System.out.println("4) Volver al menú anterior");
+        System.out.print("Por favor, seleccione una opción:");
+        
+        do {
+            correcto=teclado.hasNextInt();
+            if(correcto){
+                opcion = teclado.nextInt();
+                
+            } else {
+                System.out.println("Por favor, introduzca una opción válida");
+                teclado.next();
+            }  
+        } while (!correcto);
+        
+        switch(opcion){
+            case 1:
+            
+               junta.listarJunta();
+                
+                break;
+                
+            case 2:
+                
+                junta.renovarJunta();
+                
+                break;
+                
+            case 3:
+           
+                junta.substituirJunta();
+                
+                break;
+                
+            case 4:
+              
+                imprimirEn.menu();
+                
+                break;
+            default:
+                
+                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+                menuJunta();
+                break;
+                
+        }
+  }
 }
