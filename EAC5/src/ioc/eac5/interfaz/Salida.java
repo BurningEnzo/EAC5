@@ -150,7 +150,7 @@ public class Salida {
         System.out.println("3) Substituir cargos");
         System.out.println("4) Volver al menú anterior");
         System.out.print("Por favor, seleccione una opción:");
-        
+        boolean correcto=false;
         do {
             correcto=teclado.hasNextInt();
             if(correcto){
@@ -183,7 +183,7 @@ public class Salida {
                 
             case 4:
               
-                imprimirEn.menu();
+                Salida.menuPrincipal();
                 
                 break;
             default:

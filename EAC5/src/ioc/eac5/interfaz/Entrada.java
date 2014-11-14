@@ -49,8 +49,8 @@ public class Entrada {
             case 3:
                 Salida.cabeceraMenuCargos();
                 Salida.menuCargos();
-                    imprimir.cabeceraMenuJunta();
-                    imprimir.menuJunta();
+                    //imprimir.cabeceraMenuJunta();
+                    //imprimir.menuJunta();
                 break;
 
             case 4:
