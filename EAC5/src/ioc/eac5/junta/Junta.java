@@ -30,8 +30,8 @@ public class Junta {
         System.out.println("-------------------------------------------------------------------------------------------------");
         
     for (int a=0;a<gestor.datosVecino.length;a++){
-                          if(gestor.datosVecino[a].getCargo().equalsIgnoreCase("P") &&
-                           gestor.datosVecino[a].getCargo().equalsIgnoreCase("V")&&
+                          if(gestor.datosVecino[a].getCargo().equalsIgnoreCase("P") ||
+                           gestor.datosVecino[a].getCargo().equalsIgnoreCase("V")||
                            gestor.datosVecino[a].getCargo().equalsIgnoreCase("S")){
                             System.out.print("-"+gestor.datosVecino[a].getCargo()+"\t: "+gestor.datosVecino[a].getNombrePropietario()+" ("+gestor.datosVecino[a].getTelefono()+" ("+gestor.datosVecino[a].getNombrePiso()+")");
                             }else{
@@ -53,6 +53,14 @@ public class Junta {
         System.out.println("|                             RENOVAR JUNTA ACTUAL                                            |");
         System.out.println("-------------------------------------------------------------------------------------------------");
         
+        for (int a=0;a<gestor.datosVecino.length;a++){
+                    System.out.print("-"+gestor.datosVecino[a].getNombrePiso()+"\t("+gestor.datosVecino[a].getCoeficiente()+"): "+gestor.datosVecino[a].getNombrePropietario()+" ("+gestor.datosVecino[a].getTelefono()+")");
+                    if(gestor.datosVecino[a].getPresencia().equalsIgnoreCase("N")){
+                        System.out.println(" -AUSENTE-");
+                    } else {
+                        System.out.println();
+                    }
+                }
     }
     
      /**
