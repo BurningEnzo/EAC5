@@ -5,11 +5,9 @@
  */
 package ioc.eac5.gestor;
 
+import ioc.eac5.interfaz.Salida;
 import ioc.eines.Gestoria;
-
-import java.util.Arrays;
-
-import java.util.Scanner;
+import ioc.eac5.interfaz.Entrada;
 
 /**
  * Clase que gestiona los datos de la aplicación
@@ -23,13 +21,6 @@ public class GestorDeDatos {
     public static final String SEPARADOR_PISOS = "#";
     public static final String SEPARADOR_DATOS = ";";
 
-    private Scanner teclado;
-    private int cont;
-    private String[][] matriz;
-    private int importe;
-    private char tipo;
-    private String descripcion;
-
     //Identificadores del tipo de orden
     private static final int PISO = 0;
     private static final int NOMBRE = 1;
@@ -37,17 +28,16 @@ public class GestorDeDatos {
 
     //VARIABLES
     //Array con los datos de los vecinos
-    public Vecino[] datosVecino;
+    public static Vecino[] datosVecino;
     //Número de pisos
-
-    private int numPisos = 0;
+    static private int numPisos;
     //Array de ordenación
-    public int[][] arrayOrden;
+    public static int[][] arrayOrden;
 
     /**
      * Método que importa los datos de la gestoría y los almacena en el array
      */
-    public void tratarDatosGestoria() {
+    public static void tratarDatosGestoria() {
 
         //Se inicializa la clase Gestoria para usar sus métodos
         Gestoria datosGestoria = new Gestoria();
@@ -102,7 +92,8 @@ public class GestorDeDatos {
      * @param campo Campo a modificar
      * @param dato Dato modificado
      */
-    public void modificarCampo(String identificador, int campo, String dato) {
+    public static void modificarCampo(String identificador, int campo, String dato) {
+        Entrada solicitar = new Entrada();
         //Se hace un recorrido por todos los vecinos
         for (int i = 0; i < datosVecino.length; i++) {
             //Si el identificador introducido concuerda con uno de los pisos
@@ -111,42 +102,53 @@ public class GestorDeDatos {
                 switch (campo) {
                     case 1:
                         datosVecino[i].setNombrePropietario(dato);
+                        //Salida.mostrarPropietario(identificador, i);
+                        System.out.println("\nNombre modificado correctamente."+" ("+datosVecino[i].getNombrePropietario()+")");
+                        Salida.mostrarPropietario(identificador, i);
+                        solicitar.solicitarDatosModificacion(identificador,i);
                         break;
                     case 2:
                         datosVecino[i].setTelefono(dato);
+                        System.out.println("\nNombre modificado correctamente."+" ("+datosVecino[i].getTelefono()+")");
+                        Salida.mostrarPropietario(identificador, i);
+                        solicitar.solicitarDatosModificacion(identificador,i);
                         break;
                     case 3:
                         datosVecino[i].setCoeficiente(dato);
+                        System.out.println("\nNombre modificado correctamente."+" ("+datosVecino[i].getCoeficiente()+")");
+                        Salida.mostrarPropietario(identificador, i);
+                        solicitar.solicitarDatosModificacion(identificador,i);
                         break;
                     case 4:
                         datosVecino[i].setTipoC(dato);
+                        System.out.println("\nNombre modificado correctamente."+" ("+datosVecino[i].getTipoC()+")");
+                        Salida.mostrarPropietario(identificador, i);
+                        solicitar.solicitarDatosModificacion(identificador,i);
                         break;
                     case 5:
                         datosVecino[i].setPresencia(dato);
+                        System.out.println("\nNombre modificado correctamente."+" ("+datosVecino[i].getPresencia()+")");
+                        Salida.mostrarPropietario(identificador, i);
+                        solicitar.solicitarDatosModificacion(identificador,i);
                         break;
+
                     default:
                         System.out.println("Opción incorrecta.");
                         break;
                 }
-            } else {
-                //Si el identificador no concuerda con ningún identificador del array muestra un mensaje
-                System.out.println("El identificador " + identificador + " no pertenece a ningún piso.");
-            }
+            } //else {
+            //Si el identificador no concuerda con ningún identificador del array muestra un mensaje
+            //  System.out.println("El identificador " + identificador + " no pertenece a ningún piso.");
+            //}
         }
     }
 
     /**
      * Método que muestra el listado de pisos por el orden especificado
      *
-     *
-     *
-     * /**
-     * Método que muestra el listado de pisos por el orden especificado
-     *
-     *
      * @param orden Tipo de ordenación
      */
-    public void mostrarListado(int orden) {
+    public static void mostrarListado(int orden) {
 
         switch (orden) {
 
@@ -187,7 +189,6 @@ public class GestorDeDatos {
                 for (int a = 0; a < arrayOrden.length; a++) {
                     System.out.print("-" + datosVecino[arrayOrden[a][NOMBRE]].getNombrePiso() + "\t(" + datosVecino[arrayOrden[a][NOMBRE]].getCoeficiente() + "): " + datosVecino[arrayOrden[a][NOMBRE]].getNombrePropietario() + " (" + datosVecino[arrayOrden[a][NOMBRE]].getTelefono() + ")");
                     if (datosVecino[arrayOrden[a][NOMBRE]].getPresencia().equalsIgnoreCase("N")) {
-
                         System.out.println(" -AUSENTE-");
                     } else {
                         System.out.println();
@@ -196,7 +197,6 @@ public class GestorDeDatos {
 
                 break;
 
-            //Ordenar por nombre del pripietario
             //Ordenar por coeficiente de propiedad
             case 3:
 
@@ -219,178 +219,29 @@ public class GestorDeDatos {
                 for (int a = 0; a < arrayOrden.length; a++) {
                     System.out.print("-" + datosVecino[arrayOrden[a][COEFICIENTE]].getNombrePiso() + "\t(" + datosVecino[arrayOrden[a][COEFICIENTE]].getCoeficiente() + "): " + datosVecino[arrayOrden[a][COEFICIENTE]].getNombrePropietario() + " (" + datosVecino[arrayOrden[a][COEFICIENTE]].getTelefono() + ")");
                     if (datosVecino[arrayOrden[a][COEFICIENTE]].getPresencia().equalsIgnoreCase("N")) {
-
-                    }
-
-                    break;
-                }
-        }
-    }
-
-    /**
-     * Reparto del importe segun el coeficiente de cada propietario
-     *
-     * @param numero
-     * @return
-     */
-    public void introducirPresupuesto() {
-        teclado = new Scanner(System.in);
-        System.out.println("Cuantos presupuestos introducira?");
-        int presupuestos = teclado.nextInt();
-        matriz = new String[presupuestos][3];
-        System.out.println("Debe introducir los datos del presupuesto segun el orden que le indiquemos a continuacion.");
-        System.out.println("importe/tipo/descripcion");
-        for (int f = 0; f < matriz.length; f++) {
-            System.out.println("----------------");
-            for (int c = 0; c < matriz[f].length; c++) {
-                System.out.println("Ingrese el dato:");
-                matriz[f][c] = teclado.next();
-            }
-        }
-
-    }
-
-    /**
-     * Muestra importe y guarda en variable
-     */
-    public void importe() {
-        System.out.println("IMPORTE\n------------------");
-        for (int a = 0; a < matriz.length; a++) {
-            for (int b = 0; b < matriz[a].length; b = b + 3) {
-                importe = Integer.parseInt(matriz[a][b]);
-                cont++;
-                System.out.println("Importe " + cont + "|" + importe + "|");
-            }
-        }
-    }
-
-    /**
-     * Muestra tipo derrama y guarda en variable
-     */
-    public void tipoDerrama() {
-        System.out.println("TIPO\n------------------");
-        for (int c = 0; c < matriz.length; c++) {
-            for (int d = 1; d < matriz[c].length; d = d + 3) {
-                tipo = matriz[c][d].charAt(0);
-                cont++;
-                System.out.println("Tipo " + cont + "|" + tipo + "|");
-            }
-        }
-    }
-
-    /**
-     * Muestra la descripcion de presupuesto/s y guarda en variable
-     */
-    public void descripcion() {
-        System.out.println("Descripcion\n------------------");
-        for (int e = 0; e < matriz.length; e++) {
-            for (int f = 2; f < matriz[e].length; f = f + 3) {
-                descripcion = matriz[e][f];
-                cont++;
-                System.out.println("descripcion " + cont + "|" + descripcion + "|");
-            }
-        }
-    }
-
-    /**
-     * Muestra todos los presupuestos introducidos
-     */
-    public void mostrarPresupuesto() {
-        System.out.println("Informe de derrama\n----------------------------");
-//
-        for (int g = 0; g < matriz.length; g++) {
-            for (int h = 0; h < matriz[g].length; h++) {
-                System.out.println(matriz[g][h]);
-            }
-            System.out.println("\n------------------------------------------");
-        }
-
-    }
-
-    public void mostrarSegunTipo() {
-        importe();
-        for (int c = 0; c < matriz.length; c++) {
-            for (int d = 1; d < matriz[c].length; d = d + 3) {
-                tipo = matriz[c][d].charAt(0);
-                if (tipo == 'a') {
-                    System.out.println("TIPO A\n------------------");
-                } else if (tipo == 'b') {
-                    System.out.println("TIPO B\n------------------");
-                    double derramaB = importe / 25;
-                    System.out.println("Cada vecino debera abonar: " + derramaB + "€");
-                } else if (tipo == 'c') {
-                    System.out.println("TIPO C\n------------------");
-                    for (int i = 0; i < datosVecino.length; i++) {
-                        String coeficiente = datosVecino[i].getCoeficiente();
-                        System.out.println(coeficiente);
-
+                        System.out.println(" -AUSENTE-");
+                    } else {
+                        System.out.println();
                     }
                 }
-            }
+
+                break;
+            //Orden por defecto
+            default:
+
+                System.out.println("\nLISTA DE PROPIETARIOS POR ORDEN NATURAL DEL PISO");
+                System.out.println("------------------------------------------------\n");
+
+                for (int a = 0; a < arrayOrden.length; a++) {
+                    System.out.print("-" + datosVecino[arrayOrden[a][PISO]].getNombrePiso() + "\t(" + datosVecino[arrayOrden[a][PISO]].getCoeficiente() + "): " + datosVecino[arrayOrden[a][PISO]].getNombrePropietario() + " (" + datosVecino[arrayOrden[a][PISO]].getTelefono() + ")");
+                    if (datosVecino[arrayOrden[a][PISO]].getPresencia().equalsIgnoreCase("N")) {
+                        System.out.println(" -AUSENTE-");
+                    } else {
+                        System.out.println();
+                    }
+                }
+                break;
         }
     }
+
 }
-
-//    public double DerramaA(double numero) {
-//        double coeficienteProp = 0;
-//        String nombrePiso;
-//        double porPiso = 0;
-//        double derramaA = 0;
-//
-//        for (int a = 0; a < datosVecino.length; a++) {
-//            coeficienteProp = Double.parseDouble(datosVecino[a].coeficiente);
-//            nombrePiso = datosVecino[a].nombrePiso;
-//            derramaA = numero / coeficienteProp;
-//            System.out.println(nombrePiso + " " + coeficienteProp + " debes abonar " + (double) Math.round(derramaA) / 100 + "€");
-//
-//        }
-//        return derramaA;
-//
-//    }
-/**
- * Realiza el reparto del importe entre los 25 propietarios
- *
- * @param numero
- * @return
- */
-/**
- * Segun si estan excemptos o el importe es igual para todos a abonar
- *
- * @param numero
- * @return
- */
-//    public double DerramaC(double numero) {
-//        double coeficienteProp = 0;
-//        double derramaC = 0;
-//        String nombrePiso;
-//        int tipoC;
-//
-//        for (int c = 0; c < datosVecino.length; c++) {
-//            coeficienteProp = Double.parseDouble(datosVecino[c].coeficiente);
-//            nombrePiso = datosVecino[c].nombrePiso;
-//            tipoC = Integer.parseInt(datosVecino[c].tipoC);
-//            if (tipoC == 1) {
-//                derramaC = numero / 25;
-//                System.out.println(nombrePiso + " " + coeficienteProp + " " + tipoC + " " + derramaC);
-//            }
-//        }
-//        return derramaC;
-//    }
-//    public double DerramaC(double numero) {
-//        double coeficienteProp = 0;
-//        double derramaC = 0;
-//        String nombrePiso;
-//        int tipoC;
-//
-//        for (int c = 0; c < datosVecino.length; c++) {
-//            coeficienteProp = Double.parseDouble(datosVecino[c].getCoeficiente());
-//            nombrePiso = datosVecino[c].getNombrePiso();
-//            tipoC = Integer.parseInt(datosVecino[c].getTipoC());
-//            if (tipoC == 1) {
-//                derramaC = numero / 25;
-//                System.out.println(nombrePiso + " " + coeficienteProp + " " + tipoC + " " + derramaC);
-//            }
-//        }
-//        return derramaC;
-//    }
-

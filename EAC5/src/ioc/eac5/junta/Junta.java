@@ -4,8 +4,11 @@
  */
 package ioc.eac5.junta;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
+import ioc.eac5.gestor.Vecino;
+
+
 
 /**
  * Aquesta clase disposarà de 3 funcionalitats : Llistar junta actual , Renovar càrrecs de la junta i Substituir un càrrec.
@@ -13,14 +16,10 @@ import ioc.eac5.gestor.GestorDeDatos;
  */
 public class Junta {
     
-    String cargo = "";
-    String presidente = "";
-    String vicepresidente = "";
-    String secretario = "";
-   
-   
-    Scanner teclado = new Scanner(System.in);
+    //Scanner teclado = new Scanner(System.in);
     GestorDeDatos gestor = new GestorDeDatos();
+    
+    Vecino vecino = new Vecino();
     
     /**
      * Este metodo importa los datos de los propietarios y muestra los que tenga el valor P , V o S
@@ -29,23 +28,55 @@ public class Junta {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                            LISTAR JUNTA ACTUAL                                           |");
         System.out.println("-------------------------------------------------------------------------------------------------");
-      //  gestor.tratarDatosGestoria();
-       // datosVecino = gestor.cargo(P);
-          
-         //   System.out.println(Presidente); 
+        
+    for (int a=0;a<gestor.datosVecino.length;a++){
+                          if(gestor.datosVecino[a].getCargo().equalsIgnoreCase("P") ||
+                           gestor.datosVecino[a].getCargo().equalsIgnoreCase("V")||
+                           gestor.datosVecino[a].getCargo().equalsIgnoreCase("S")){
+                            System.out.print("-"+gestor.datosVecino[a].getCargo()+"\t: "+gestor.datosVecino[a].getNombrePropietario()+" ("+gestor.datosVecino[a].getTelefono()+" ("+gestor.datosVecino[a].getNombrePiso()+")");
+                            }else{
+                               System.out.println("Fallo!!");
+                           }
+                }
     }
 
+    //coeficiente=datosVecino[i].getCoeficiente()
+      //      for (int i=0;j<datosVecino.lenght;i++){datosVecino[i]getcoeficiente();
      /**
      * Este metodo importa los datos de los propietarios y asigna los cargos teniendo en cuenta el campo N y S que nos indica
      * si el propietario vive en el piso.
      */
     
+     
     public void renovarJunta() {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                             RENOVAR JUNTA ACTUAL                                            |");
         System.out.println("-------------------------------------------------------------------------------------------------");
-
+        
+     //   int[] posSortejades={-1,-1,-1};
+       // posSelec = posSelec-1;
+         for (int a=0;a<gestor.datosVecino.length;a++){
+           // posSelec = posicioValida(posSelec, dadesPisos);
+            // posSortejades[i]=posSelec;      
+            System.out.print("-"+gestor.datosVecino[a].getNombrePiso()+"\t("+gestor.datosVecino[a].getCoeficiente()+"): "+gestor.datosVecino[a].getNombrePropietario()+" ("+gestor.datosVecino[a].getTelefono()+")");
+                    if(gestor.datosVecino[a].getPresencia().equalsIgnoreCase("N")){
+                       System.out.println(" -AUSENTE-");
+                    } else {
+                      System.out.println();
+                    }
+                }
     }
+    
+  //  int[] posSortejades={-1,-1,-1};
+    //    posSelec = posSelec-1;
+      //  for(int i=0; i<3; i++){
+        //    posSelec = posicioValida(posSelec, dadesPisos);
+          //  posSortejades[i]=posSelec;
+    //    }
+        
+        //
+//return posSortejades;
+ //   }
     
      /**
      * Este metodo importa los datos de los propietarios y asigna el cargo que le indique el usuario por teclado teniendo en cuenta
@@ -56,15 +87,15 @@ public class Junta {
      * En el caso de que tengamos que subtituir el cargo del secretario , los cargos presidente y vicepresidente quedan igual.
      */
     
-    public void substituirJunta() {
+  public void substituirJunta() {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                             SUBSTITUCION JUNTA ACTUAL                                     |");
         System.out.println("-------------------------------------------------------------------------------------------------");
 
         System.out.println("Introduzca el cargo que quiere subtituir");
         System.out.println("[Presidente , Vicepresidente o Secretario]");
-        cargo = teclado.next();
+//        //cargo = teclado.next();
 
-    }
+ }
 }
 

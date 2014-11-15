@@ -20,7 +20,7 @@ public class Vecino {
     private String tipoC; //0 -> exento, 1 -> no exento
     private String cargo; //Cargo que ocupa en la junta
     
-    //Clases para acceder y modificar los datos de Vecino
+    //Métodos para acceder y modificar los datos de Vecino
     public String getIdentificador(){
         return identificador;
     }
