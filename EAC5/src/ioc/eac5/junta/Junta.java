@@ -64,15 +64,9 @@ public class Junta {
                        System.out.println(" -AUSENTE-");
                     } else {
 
-        for (int a=0;a<gestor.datosVecino.length;a++){
-                    System.out.print("-"+gestor.datosVecino[a].getNombrePiso()+"\t("+gestor.datosVecino[a].getCoeficiente()+"): "+gestor.datosVecino[a].getNombrePropietario()+" ("+gestor.datosVecino[a].getTelefono()+")");
-                    if(gestor.datosVecino[a].getPresencia().equalsIgnoreCase("N")){
-                        System.out.println(" -AUSENTE-");
-                    } else {
-                        System.out.println();
-
-                    }
-                }
+       
+    }
+         }
     }
     
   //  int[] posSortejades={-1,-1,-1};
@@ -110,4 +104,5 @@ public class Junta {
 
  }
 }
+
 

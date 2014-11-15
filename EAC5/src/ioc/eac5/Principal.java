@@ -35,14 +35,7 @@ public class Principal {
         prueba1.tipoDerrama();
         prueba1.listarDerrama();
 
-     //   GestorDeDatos prueba = new GestorDeDatos();
-        //Pruebas
-        //prueba.tratarDatosGestoria();
-        //imprimir.mostrarPropietario("LE", 0);
-        //prueba.mostrarListado(3);
-        //imprimir.bienvenida();
-        Salida.menuPrincipal();
-        //prueba.DerramaB();
+  
 
     
     }
