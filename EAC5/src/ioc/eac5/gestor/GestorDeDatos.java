@@ -39,6 +39,7 @@ public class GestorDeDatos {
     //Array con los datos de los vecinos
     public Vecino[] datosVecino;
     //Número de pisos
+
     private int numPisos = 0;
     //Array de ordenación
     public int[][] arrayOrden;
@@ -137,6 +138,12 @@ public class GestorDeDatos {
     /**
      * Método que muestra el listado de pisos por el orden especificado
      *
+     *
+     *
+     * /**
+     * Método que muestra el listado de pisos por el orden especificado
+     *
+     *
      * @param orden Tipo de ordenación
      */
     public void mostrarListado(int orden) {
@@ -180,6 +187,7 @@ public class GestorDeDatos {
                 for (int a = 0; a < arrayOrden.length; a++) {
                     System.out.print("-" + datosVecino[arrayOrden[a][NOMBRE]].getNombrePiso() + "\t(" + datosVecino[arrayOrden[a][NOMBRE]].getCoeficiente() + "): " + datosVecino[arrayOrden[a][NOMBRE]].getNombrePropietario() + " (" + datosVecino[arrayOrden[a][NOMBRE]].getTelefono() + ")");
                     if (datosVecino[arrayOrden[a][NOMBRE]].getPresencia().equalsIgnoreCase("N")) {
+
                         System.out.println(" -AUSENTE-");
                     } else {
                         System.out.println();
@@ -188,6 +196,7 @@ public class GestorDeDatos {
 
                 break;
 
+            //Ordenar por nombre del pripietario
             //Ordenar por coeficiente de propiedad
             case 3:
 
@@ -210,28 +219,11 @@ public class GestorDeDatos {
                 for (int a = 0; a < arrayOrden.length; a++) {
                     System.out.print("-" + datosVecino[arrayOrden[a][COEFICIENTE]].getNombrePiso() + "\t(" + datosVecino[arrayOrden[a][COEFICIENTE]].getCoeficiente() + "): " + datosVecino[arrayOrden[a][COEFICIENTE]].getNombrePropietario() + " (" + datosVecino[arrayOrden[a][COEFICIENTE]].getTelefono() + ")");
                     if (datosVecino[arrayOrden[a][COEFICIENTE]].getPresencia().equalsIgnoreCase("N")) {
-                        System.out.println(" -AUSENTE-");
-                    } else {
-                        System.out.println();
+
                     }
+
+                    break;
                 }
-
-                break;
-            //Orden por defecto
-            default:
-
-                System.out.println("\nLISTA DE PROPIETARIOS POR ORDEN NATURAL DEL PISO");
-                System.out.println("------------------------------------------------\n");
-
-                for (int a = 0; a < arrayOrden.length; a++) {
-                    System.out.print("-" + datosVecino[arrayOrden[a][PISO]].getNombrePiso() + "\t(" + datosVecino[arrayOrden[a][PISO]].getCoeficiente() + "): " + datosVecino[arrayOrden[a][PISO]].getNombrePropietario() + " (" + datosVecino[arrayOrden[a][PISO]].getTelefono() + ")");
-                    if (datosVecino[arrayOrden[a][PISO]].getPresencia().equalsIgnoreCase("N")) {
-                        System.out.println(" -AUSENTE-");
-                    } else {
-                        System.out.println();
-                    }
-                }
-                break;
         }
     }
 
@@ -312,7 +304,7 @@ public class GestorDeDatos {
             }
             System.out.println("\n------------------------------------------");
         }
-       
+
     }
 
     public void mostrarSegunTipo() {
@@ -329,14 +321,15 @@ public class GestorDeDatos {
                 } else if (tipo == 'c') {
                     System.out.println("TIPO C\n------------------");
                     for (int i = 0; i < datosVecino.length; i++) {
-                        String coeficiente=datosVecino[i].getCoeficiente();
-                            System.out.println(coeficiente);
-                        
+                        String coeficiente = datosVecino[i].getCoeficiente();
+                        System.out.println(coeficiente);
+
                     }
                 }
             }
         }
     }
+}
 
 //    public double DerramaA(double numero) {
 //        double coeficienteProp = 0;
@@ -354,18 +347,18 @@ public class GestorDeDatos {
 //        return derramaA;
 //
 //    }
-    /**
-     * Realiza el reparto del importe entre los 25 propietarios
-     *
-     * @param numero
-     * @return
-     */
-    /**
-     * Segun si estan excemptos o el importe es igual para todos a abonar
-     *
-     * @param numero
-     * @return
-     */
+/**
+ * Realiza el reparto del importe entre los 25 propietarios
+ *
+ * @param numero
+ * @return
+ */
+/**
+ * Segun si estan excemptos o el importe es igual para todos a abonar
+ *
+ * @param numero
+ * @return
+ */
 //    public double DerramaC(double numero) {
 //        double coeficienteProp = 0;
 //        double derramaC = 0;
@@ -400,4 +393,4 @@ public class GestorDeDatos {
 //        }
 //        return derramaC;
 //    }
-}
+

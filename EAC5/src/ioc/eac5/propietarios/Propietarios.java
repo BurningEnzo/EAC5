@@ -19,7 +19,7 @@ public class Propietarios {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println("|                           Gestión de Propietarios                                             |");
         System.out.println("-------------------------------------------------------------------------------------------------");
-        String Cadena=gestoria.importarDades();
+        
         
     }
 

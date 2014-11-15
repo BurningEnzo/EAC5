@@ -21,8 +21,13 @@ public class Principal {
         Entrada imprimir = new Entrada();
         
         //Pruebas
+
 //        prueba.tratarDatosGestoria();
 //        prueba.mostrarListado(3);
+
+        //prueba.tratarDatosGestoria();
+        //prueba.mostrarListado(3);
+
         imprimir.menu();
         //prueba.DerramaB();
 
