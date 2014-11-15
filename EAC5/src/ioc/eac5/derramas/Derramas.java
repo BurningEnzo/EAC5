@@ -14,6 +14,7 @@ public class Derramas {
 
     private double importe;
     private String descripcion;
+
     private char tipoDerrama;
 
     //Métodos para acceder y modificar los datos de Derramas
@@ -38,6 +39,7 @@ public class Derramas {
     }
 
     public void setTipoDerrama(char tipoDerrama) {
+
         this.tipoDerrama = tipoDerrama;
     }
 

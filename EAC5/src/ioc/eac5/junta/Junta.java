@@ -53,6 +53,7 @@ public class Junta {
         System.out.println("|                             RENOVAR JUNTA ACTUAL                                            |");
         System.out.println("-------------------------------------------------------------------------------------------------");
         
+
      //   int[] posSortejades={-1,-1,-1};
        // posSelec = posSelec-1;
          for (int a=0;a<gestor.datosVecino.length;a++){
@@ -62,7 +63,14 @@ public class Junta {
                     if(gestor.datosVecino[a].getPresencia().equalsIgnoreCase("N")){
                        System.out.println(" -AUSENTE-");
                     } else {
-                      System.out.println();
+
+        for (int a=0;a<gestor.datosVecino.length;a++){
+                    System.out.print("-"+gestor.datosVecino[a].getNombrePiso()+"\t("+gestor.datosVecino[a].getCoeficiente()+"): "+gestor.datosVecino[a].getNombrePropietario()+" ("+gestor.datosVecino[a].getTelefono()+")");
+                    if(gestor.datosVecino[a].getPresencia().equalsIgnoreCase("N")){
+                        System.out.println(" -AUSENTE-");
+                    } else {
+                        System.out.println();
+
                     }
                 }
     }
@@ -94,7 +102,11 @@ public class Junta {
 
         System.out.println("Introduzca el cargo que quiere subtituir");
         System.out.println("[Presidente , Vicepresidente o Secretario]");
+
 //        //cargo = teclado.next();
+
+//        cargo = teclado.next();
+
 
  }
 }

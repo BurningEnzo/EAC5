@@ -5,8 +5,12 @@
  */
 package ioc.eac5;
 import ioc.eac5.interfaz.Salida;
+
 import ioc.eac5.gestor.GestorDeDatos;
 import ioc.eac5.derramas.GestorDeDerramas;
+
+//import ioc.eac5.gestor.GestorDeDatos;
+
 /**
  * Clase principal que da inicio al programa
  * @author Lorenzo
@@ -17,6 +21,7 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
 
         GestorDeDatos prueba = new GestorDeDatos();
         GestorDeDerramas  prueba1 = new GestorDeDerramas();
@@ -29,8 +34,21 @@ public class Principal {
         prueba1.añadirDerrama();
         prueba1.tipoDerrama();
         prueba1.listarDerrama();
+
+     //   GestorDeDatos prueba = new GestorDeDatos();
+        //Pruebas
+        //prueba.tratarDatosGestoria();
+        //imprimir.mostrarPropietario("LE", 0);
+        //prueba.mostrarListado(3);
+        //imprimir.bienvenida();
+        Salida.menuPrincipal();
+        //prueba.DerramaB();
+
     
     }
     
     
+
 }
+
+

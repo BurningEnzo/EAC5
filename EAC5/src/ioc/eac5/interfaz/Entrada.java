@@ -7,7 +7,9 @@ package ioc.eac5.interfaz;
 
 import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
+
 import ioc.eac5.derramas.GestorDeDerramas;
+
 
 /**
  *
@@ -327,7 +329,7 @@ public class Entrada {
 
         switch (opcion) {
             case 1:
-                
+
                 break;
 
             case 2:
