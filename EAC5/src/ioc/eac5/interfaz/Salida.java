@@ -132,8 +132,14 @@ public class Salida {
     }
 
 
-    public static void menuCargos() {}
-
+    public static void menuCargos() {
+     System.out.println("1) Listar la junta actual");
+        System.out.println("2) Renovar cargos de la junta");
+        System.out.println("3) Sustituir cargo de la junta");
+        System.out.println("4) Volver al menú anterior");
+        System.out.print("Por favor, seleccione una opción:");
+        solicitar.opcionesMenuCargos();
+    }
    
     
       public static void mostrarCargos(String identificador, int i) {
