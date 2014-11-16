@@ -24,16 +24,16 @@ public class Principal {
 
 
         GestorDeDatos prueba = new GestorDeDatos();
-        GestorDeDerramas  prueba1 = new GestorDeDerramas();
+        //GestorDeDerramas  prueba1 = new GestorDeDerramas();
         //Pruebas
-        prueba.tratarDatosGestoria();
+        //prueba.tratarDatosGestoria();
         //imprimir.mostrarPropietario("LE", 0);
         //prueba.mostrarListado(1);
         //imprimir.bienvenida();
-        //Salida.menuPrincipal();
-        prueba1.añadirDerrama();
-        prueba1.tipoDerrama();
-        prueba1.listarDerrama();
+        Salida.menuPrincipal();
+        //prueba1.añadirDerrama();
+        //prueba1.tipoDerrama();
+        //prueba1.listarDerrama();
 
   
 
