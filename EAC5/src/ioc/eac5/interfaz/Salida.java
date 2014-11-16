@@ -130,8 +130,7 @@ public class Salida {
 
 
     }
-
-
+    
     public static void menuCargos() {
      System.out.println("1) Listar la junta actual");
         System.out.println("2) Renovar cargos de la junta");
@@ -141,7 +140,6 @@ public class Salida {
         solicitar.opcionesMenuCargos();
     }
    
-    
       public static void mostrarCargos(String identificador, int i) {
         System.out.println("\n       Detalle de cargos de los propietario");
         System.out.println("-----------------------------------------------");
@@ -158,70 +156,6 @@ public class Salida {
 
         System.out.println("Muchas gracias por usar nuestro programa.");
     }
-
-
-
-    //Menús de: 2) Gestión de derramas
- 
-
-    public void cabeceraMenuJunta(){
-        System.out.println("-----------------------------------------------");
-        System.out.println("                Cargos de la junta");
-        System.out.println("-----------------------------------------------");
-    }
-
-  public void menuJunta(){
-                
-        System.out.println("1) Lista junta actual");
-        System.out.println("2) Renovar cargos de la junta");
-        System.out.println("3) Substituir cargos");
-        System.out.println("4) Volver al menú anterior");
-        System.out.print("Por favor, seleccione una opción:");
-        boolean correcto=false;
-        do {
-            correcto=teclado.hasNextInt();
-            if(correcto){
-                opcion = teclado.nextInt();
-                
-            } else {
-                System.out.println("Por favor, introduzca una opción válida");
-                teclado.next();
-            }  
-        } while (!correcto);
-        
-        switch(opcion){
-            case 1:
-            
-               junta.listarJunta();
-                
-                break;
-                
-            case 2:
-                
-                junta.renovarJunta();
-                
-                break;
-                
-            case 3:
-           
-                junta.substituirJunta();
-                
-                break;
-                
-            case 4:
-              
-                Salida.menuPrincipal();
-                
-                break;
-            default:
-                
-                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
-                menuJunta();
-                break;
-                
-        }
-
-  }
 }
 
       
