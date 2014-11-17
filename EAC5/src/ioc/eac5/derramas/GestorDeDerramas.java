@@ -11,7 +11,8 @@ import ioc.eac5.interfaz.Entrada;
 
 import java.util.List;
 import ioc.eac5.interfaz.Salida;
-import 
+import java.util.Arrays;
+import org.apache.commons.lang.ArrayUtils; 
 
 /**
  *
@@ -141,8 +142,7 @@ public class GestorDeDerramas {
                 System.out.println("Importe: " + d[numero - 1].getImporte() + " Tipo: " + d[numero - 1].getTipoDerrama() + " Nueva Descripción: " + d[numero - 1].getDescripcion() + " ");
                 break;
             case 4:
-                ArrayList list = new ArrayList();
-                list.remove(d[numero-1]);
+                
                         
                 for (int i = 0; i < cont; i++) {
 
