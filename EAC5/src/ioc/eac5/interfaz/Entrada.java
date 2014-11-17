@@ -395,9 +395,9 @@ public class Entrada {
 
                     correcto = teclado.hasNext();
                     if (correcto) {
-                        nuevaCargo = teclado.next().charAt(0);
+                        nuevoCargo = teclado.next().charAt(0);
 
-                        if (Character.toLowerCase(nuevaCargo) == 's') {
+                        if (Character.toLowerCase(nuevoCargo) == 's') {
                             GestorDeDatos.modificarCampo(identificador, opcion, "N");
                         } else if (Character.toLowerCase(nuevaPresencia) == 'n') {
                             GestorDeDatos.modificarCampo(identificador, opcion, "S");
