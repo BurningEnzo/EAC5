@@ -6,7 +6,7 @@ package ioc.eac5.junta;
 
 //import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
-import ioc.eac5.gestor.Vecino;
+
 
 
 
@@ -19,7 +19,7 @@ public class Junta {
     //Scanner teclado = new Scanner(System.in);
     GestorDeDatos gestor = new GestorDeDatos();
     
-    Vecino vecino = new Vecino();
+    
     
     /**
      * Este metodo importa los datos de los propietarios y muestra los que tenga el valor P , V o S
