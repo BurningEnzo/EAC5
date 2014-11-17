@@ -7,10 +7,11 @@ package ioc.eac5.derramas;
 
 import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
-import java.util.ArrayList;
-import java.util.List;
 import ioc.eac5.interfaz.Entrada;
+
+import java.util.List;
 import ioc.eac5.interfaz.Salida;
+import 
 
 /**
  *
@@ -20,9 +21,7 @@ public class GestorDeDerramas {
 
     Scanner leer = new Scanner(System.in);
     Salida salida = new Salida();
-    Entrada entrada = new Entrada();
     GestorDeDatos gestor = new GestorDeDatos();
-
     Double importe = 0.0;
     char tipo = ' ';
     String descripcion = " ";
@@ -55,6 +54,7 @@ public class GestorDeDerramas {
                 break;
             case 2:
                 salida.cabeceraMenuDerramas();
+                
                 salida.menuDerramas();
                 break;
         }

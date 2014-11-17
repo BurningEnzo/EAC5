@@ -33,13 +33,14 @@ public class Principal {
 
         //Salida.menuPrincipal();
         prueba1.añadirDerrama();
-        prueba1.modificarDerramas();
-
-        //Salida.menuPrincipal();
-        //prueba1.añadirDerrama();
-
+        //prueba1.listarDerrama();
+        //prueba1.modificarDerramas();
         prueba1.tipoDerrama();
-        prueba1.listarDerrama();
+        //Salida.menuPrincipal();
+      
+
+        
+        
 
   
 
