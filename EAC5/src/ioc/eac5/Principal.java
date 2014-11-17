@@ -24,7 +24,7 @@ public class Principal {
 
 
         GestorDeDatos prueba = new GestorDeDatos();
-        //GestorDeDerramas  prueba1 = new GestorDeDerramas();
+        GestorDeDerramas  prueba1 = new GestorDeDerramas();
         //Pruebas
         //prueba.tratarDatosGestoria();
         //imprimir.mostrarPropietario("LE", 0);

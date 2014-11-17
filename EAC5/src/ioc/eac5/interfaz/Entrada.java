@@ -7,7 +7,6 @@ package ioc.eac5.interfaz;
 
 import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
-
 import ioc.eac5.derramas.GestorDeDerramas;
 
 
@@ -314,7 +313,7 @@ public class Entrada {
     }
 
     public void opcionesMenuDerramas() {
-
+        GestorDeDerramas GestorDeDerranas = new GestorDeDerramas();
         boolean correcto;
         do {
             correcto = teclado.hasNextInt();
@@ -329,19 +328,25 @@ public class Entrada {
 
         switch (opcion) {
             case 1:
-
+                Salida.cabeceraMenuDerramas();
+                GestorDeDerranas.añadirDerrama();
                 break;
 
             case 2:
-
+                Salida.cabeceraMenuDerramas();
+                GestorDeDerranas.modificarDerramas();
                 break;
 
             case 3:
-
+                Salida.cabeceraMenuDerramas();
+                GestorDeDerranas.listarDerrama();
                 break;
 
             case 4:
-
+                Salida.cabeceraMenuDerramas();
+                GestorDeDerranas.tipoDerrama();
+                break;
+            case 5:
                 break;
             default:
 

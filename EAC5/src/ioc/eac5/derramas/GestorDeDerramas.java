@@ -8,6 +8,8 @@ package ioc.eac5.derramas;
 import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
 import java.util.ArrayList;
+import java.util.List;
+import ioc.eac5.interfaz.Entrada;
 import ioc.eac5.interfaz.Salida;
 
 /**
@@ -18,6 +20,7 @@ public class GestorDeDerramas {
 
     Scanner leer = new Scanner(System.in);
     Salida salida = new Salida();
+    Entrada entrada = new Entrada();
     GestorDeDatos gestor = new GestorDeDatos();
 
     Double importe = 0.0;
@@ -61,8 +64,7 @@ public class GestorDeDerramas {
     public void listarDerrama() {
         for (int i = 0; i < cont; i++) {
             System.out.println("Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
-            salida.cabeceraMenuDerramas();
-            salida.menuDerramas();
+            
         }
     }
 
@@ -104,7 +106,7 @@ public class GestorDeDerramas {
 
     }
 
-    public void mofificarDerramas() {
+    public void modificarDerramas() {
         int numero = 0;
         int Mopcion = 0;
         for (int i = 0; i < cont; i++) {
@@ -139,9 +141,11 @@ public class GestorDeDerramas {
                 System.out.println("Importe: " + d[numero - 1].getImporte() + " Tipo: " + d[numero - 1].getTipoDerrama() + " Nueva Descripción: " + d[numero - 1].getDescripcion() + " ");
                 break;
             case 4:
-                ArrayList al_strings1 = new ArrayList<>();
-                al_strings1.remove(d[numero - 1]);
+                ArrayList list = new ArrayList();
+                list.remove(d[numero-1]);
+                        
                 for (int i = 0; i < cont; i++) {
+
                     System.out.println("Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
                 }
                 break;

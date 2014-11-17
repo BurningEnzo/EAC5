@@ -116,7 +116,8 @@ public class Salida {
         System.out.println("1) Añadir derrama");
         System.out.println("2) Modificar derrama existente");
         System.out.println("3) Listar derramas");
-        System.out.println("4) Volver al menú anterior");
+        System.out.println("4) Calcular reparto de los presupuestos");
+        System.out.println("5) Volver al menú anterior");
         System.out.print("Por favor, seleccione una opción:");
         solicitar.opcionesMenuDerramas();
 
