@@ -141,6 +141,7 @@ public class GestorDeDerramas {
                 System.out.println("Importe: " + d[numero - 1].getImporte() + " Tipo: " + d[numero - 1].getTipoDerrama() + " Nueva Descripción: " + d[numero - 1].getDescripcion() + " ");
                 break;
             case 4:
+                //ANAIS
                 ArrayList list = new ArrayList();
                 list.remove(d[numero-1]);
                         
