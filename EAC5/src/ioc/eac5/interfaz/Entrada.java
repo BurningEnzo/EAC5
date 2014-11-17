@@ -336,28 +336,28 @@ public class Entrada {
             case 1:
                 Salida.cabeceraMenuDerramas();
 
-                GestorDeDerramas.añadirDerrama();
+              
 
                 break;
 
             case 2:
                 Salida.cabeceraMenuDerramas();
 
-                GestorDeDerramas.modificarDerramas();
-r
+             
+
                 break;
 
             case 3:
                 Salida.cabeceraMenuDerramas();
 
-                GestorDeDerramas.listarDerrama();
+                
 
                 break;
 
             case 4:
                 Salida.cabeceraMenuDerramas();
 
-                GestorDeDerramas.tipoDerrama();
+                
 
                 break;
             case 5:
