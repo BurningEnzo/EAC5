@@ -316,7 +316,7 @@ public class Entrada {
     }
 
     public void opcionesMenuDerramas() {
-        GestorDeDerramas GestorDeDerranas = new GestorDeDerramas();
+        GestorDeDerramas GestorDeDerramas = new GestorDeDerramas();
         boolean correcto;
         do {
             correcto = teclado.hasNextInt();
@@ -332,22 +332,22 @@ public class Entrada {
         switch (opcion) {
             case 1:
                 Salida.cabeceraMenuDerramas();
-                GestorDeDerranas.añadirDerrama();
+                GestorDeDerramas.añadirDerrama();
                 break;
 
             case 2:
                 Salida.cabeceraMenuDerramas();
-                GestorDeDerranas.modificarDerramas();
+                GestorDeDerramas.modificarDerramas();
                 break;
 
             case 3:
                 Salida.cabeceraMenuDerramas();
-                GestorDeDerranas.listarDerrama();
+                GestorDeDerramas.listarDerrama();
                 break;
 
             case 4:
                 Salida.cabeceraMenuDerramas();
-                GestorDeDerranas.tipoDerrama();
+                GestorDeDerramas.tipoDerrama();
                 break;
             case 5:
                 break;
@@ -390,7 +390,7 @@ public class Entrada {
            break;
             case 2:
                 if (importado) {
-                int i;
+                //int i;
             for (Vecino datosVecino : GestorDeDatos.datosVecino) {
                 if (datosVecino.getCargo().equalsIgnoreCase("P") || datosVecino.getCargo().equalsIgnoreCase("V") || datosVecino.getCargo().equalsIgnoreCase("S")) {
                 System.out.print("-" + datosVecino.getCargo() + "\t: " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + " (" + datosVecino.getNombrePiso() + ")");
@@ -398,16 +398,42 @@ public class Entrada {
             }
                 }
                 break;
+                case 3:
+                Salida.cabeceraMenuCargos();
+                if (importado) {
+                    int i;
+                    boolean preguntar = true;
 
-      
-              
+                    System.out.print("Por favor, introduzca el cargo de la junta a modificar: ");
+                    do {
+
+                        cargoElegido = teclado.nextLine();
+
+                        for (i = 0; i < GestorDeDatos.datosVecino.length; i++) {
+
+                            if (cargoElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getCargo())) {
+                                Salida.mostrarPropietario(cargoElegido, i);
+
+                                preguntar = false;
+
+                            }
+
+                        }
+
+                    } while (preguntar);
+                    solicitarDatosModificacion(cargoElegido, i);
+                }
+                break;
                 case 4:
-
+                Salida.cabeceraMenuCargos();
+                break;
+            case 5:
+                Salida.cabeceraMenuCargos();
+                Salida.menuCargos();
                 break;
             default:
 
                 System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
-                opcionesMenuCargos();
                 
                             }
                 
