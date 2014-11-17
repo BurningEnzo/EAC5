@@ -9,7 +9,6 @@ import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
 import ioc.eac5.derramas.GestorDeDerramas;
 
-
 /**
  *
  * @author Uri
@@ -355,7 +354,7 @@ public class Entrada {
         }
     }
 
- public void opcionesMenuCargos() {
+    public void opcionesMenuCargos() {
         boolean correcto;
         do {
             correcto = teclado.hasNextInt();
@@ -367,30 +366,31 @@ public class Entrada {
                 teclado.next();
             }
         } while (!correcto);
- 
+
         switch (opcion) {
             case 1:
-                       for (int a=0;a<GestorDeDatos.datosVecino.length;a++){
-                          if(GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("P") ||
-                           GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("V")||
-                           GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("S")){
-                            System.out.print("-"+GestorDeDatos.datosVecino[a].getCargo()+"\t: "+GestorDeDatos.datosVecino[a].getNombrePropietario()+" ("+GestorDeDatos.datosVecino[a].getTelefono()+" ("+GestorDeDatos.datosVecino[a].getNombrePiso()+")");
-                          }
-                       }
-        
-               break;
-        
-                case 2:
-                    int i;
-                    boolean preguntar = true;
-                    do {
-                        cargoElegido = teclado.nextLine();
-                        for (i= 0; i< GestorDeDatos.datosVecino.length; i++) 
+                for (int a = 0; a < GestorDeDatos.datosVecino.length; a++) {
+                    if (GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("P")
+                            || GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("V")
+                            || GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("S")) {
+                        System.out.print("-" + GestorDeDatos.datosVecino[a].getCargo() + "\t: " + GestorDeDatos.datosVecino[a].getNombrePropietario() + " (" + GestorDeDatos.datosVecino[a].getTelefono() + " (" + GestorDeDatos.datosVecino[a].getNombrePiso() + ")");
+                    }
+                }
+
+                break;
+
+            case 2:
+                int i;
+                boolean preguntar = true;
+                do {
+                    cargoElegido = teclado.nextLine();
+                    for (i = 0; i < GestorDeDatos.datosVecino.length; i++) {
                         System.out.println("RENOVAR CARGOS DE LA JUNTA");
-                            if (cargoElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getCargo())) 
-                            
+                    }
+                    if (cargoElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getCargo())) {
+
+                    }
                     break;
-                            
                   case 3:
                      char nuevoCargo;
                 System.out.print("Introduce el cargo a substituir ");
@@ -423,10 +423,9 @@ public class Entrada {
 
                 System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
                 opcionesMenuCargos();
-                break;
+                
                             }
-                    
- 
-
-
- 
+                
+        }
+    }
+}
