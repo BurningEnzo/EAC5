@@ -21,6 +21,7 @@ public class Entrada {
     //   GestorDeDatos gestor = new GestorDeDatos();
     int opcion;
     String identificadorElegido;
+    String cargoElegido;
     private boolean importado = false;
 
     public void opcionesMenuPrincipal() {
@@ -52,8 +53,6 @@ public class Entrada {
             case 3:
                 Salida.cabeceraMenuCargos();
                 Salida.menuCargos();
-                    //imprimir.cabeceraMenuJunta();
-                    //imprimir.menuJunta();
                 break;
 
             case 4:
@@ -348,15 +347,11 @@ public class Entrada {
                 System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
                 opcionesMenuDerramas();
                 break;
-
         }
-
     }
 
-    public void opcionesMenuCargos() {
-
+ public void opcionesMenuCargos() {
         boolean correcto;
-
         do {
             correcto = teclado.hasNextInt();
             if (correcto) {
@@ -367,21 +362,56 @@ public class Entrada {
                 teclado.next();
             }
         } while (!correcto);
-
+ 
         switch (opcion) {
             case 1:
+                       for (int a=0;a<GestorDeDatos.datosVecino.length;a++){
+                          if(GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("P") ||
+                           GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("V")||
+                           GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("S")){
+                            System.out.print("-"+GestorDeDatos.datosVecino[a].getCargo()+"\t: "+GestorDeDatos.datosVecino[a].getNombrePropietario()+" ("+GestorDeDatos.datosVecino[a].getTelefono()+" ("+GestorDeDatos.datosVecino[a].getNombrePiso()+")");
+                          }
+                       }
+        
+               break;
+        
+                case 2:
+                    int i;
+                    boolean preguntar = true;
+                    do {
+                        cargoElegido = teclado.nextLine();
+                        for (i= 0; i< GestorDeDatos.datosVecino.length; i++) 
+                        System.out.println("RENOVAR CARGOS DE LA JUNTA");
+                            if (cargoElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getCargo())) 
+                            
+                    break;
+                            
+                  case 3:
+                     char nuevoCargo;
+                System.out.print("Introduce el cargo a substituir ");
 
+                preguntar = true;
+                while (preguntar) {
+
+                    correcto = teclado.hasNext();
+                    if (correcto) {
+                        nuevaCargo = teclado.next().charAt(0);
+
+                        if (Character.toLowerCase(nuevaCargo) == 's') {
+                            GestorDeDatos.modificarCampo(identificador, opcion, "N");
+                        } else if (Character.toLowerCase(nuevaPresencia) == 'n') {
+                            GestorDeDatos.modificarCampo(identificador, opcion, "S");
+                        }
+
+                    }
+
+                    preguntar = false;
+
+                }
                 break;
-
-            case 2:
-
-                break;
-
-            case 3:
-
-                break;
-
-            case 4:
+      
+              
+                case 4:
 
                 break;
             default:
@@ -389,8 +419,9 @@ public class Entrada {
                 System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
                 opcionesMenuCargos();
                 break;
+                            }
+                    
+ 
 
-        }
 
-    }
-}
+ 
