@@ -146,6 +146,7 @@ public class GestorDeDerramas {
                 d[numero-1].setDescripcion("");
 
                 //ANAIS
+                //funciona?
                
 
                         
