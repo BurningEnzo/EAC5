@@ -389,7 +389,7 @@ public class Entrada {
             case 2:
                 Salida.cabeceraMenuCargos();
             for (Vecino datosVecino : GestorDeDatos.datosVecino) {
-                 System.out.print("-" + datosVecino.getCargo() + "\t: " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + " (" + datosVecino.getNombrePiso() + ")");
+                 System.out.print("-" + datosVecino.getCargo() + "\t: " +datosVecino.getNombrePropietario() + " (" +datosVecino.getTelefono() + " (" +datosVecino.getNombrePiso() + ")");
                 if (datosVecino.getCargo().equalsIgnoreCase("P") || datosVecino.getCargo().equalsIgnoreCase("V") || datosVecino.getCargo().equalsIgnoreCase("S")) {
                 //System.out.println(" -CARGO-");
                 }
@@ -403,13 +403,11 @@ public class Entrada {
             // posSortejades[i]=posSelec;
             System.out.print("-" + datosVecino.getNombrePiso() + "\t(" + datosVecino.getCoeficiente() + "): " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + ")");
             if (datosVecino.getPresencia().equalsIgnoreCase("N")) {
-                System.out.println(" -AUSENTE-");
             }
         }
                 break;
                     case 4:
                     Salida.cabeceraMenuCargos();
-                    if (importado) {
                     int i;
                     boolean preguntar = true;
 
@@ -432,10 +430,9 @@ public class Entrada {
                     
                 } while (preguntar);
                     solicitarDatosModificacion(cargoElegido, i);
-                }
-                    break;
-                    
-                    case 5:
+        
+                 break;
+                case 5:
                     Salida.cabeceraMenuCargos();
                     Salida.menuCargos();
                     break;
@@ -445,6 +442,7 @@ public class Entrada {
                     
                 }
             }
-        }
+}
+ 
 
 
