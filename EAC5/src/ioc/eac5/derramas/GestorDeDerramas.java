@@ -10,7 +10,7 @@ import ioc.eac5.gestor.GestorDeDatos;
 import ioc.eac5.interfaz.Entrada;
 import ioc.eac5.interfaz.Salida;
 import java.util.*;
-//import org.apache.commons.lang.ArrayUtils; 
+
 
 /**
  *
@@ -151,7 +151,6 @@ public class GestorDeDerramas {
                 break;
 
         }
-        //System.out.println("Importe: " + d[numero-1].getImporte() + " Tipo: " + d[numero-1].getTipoDerrama() + " Descripción: " + d[numero-1].getDescripcion() + "");
 
     }
 }
