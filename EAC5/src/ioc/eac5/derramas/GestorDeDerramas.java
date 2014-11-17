@@ -8,10 +8,8 @@ package ioc.eac5.derramas;
 import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
 import ioc.eac5.interfaz.Entrada;
-
-import java.util.List;
 import ioc.eac5.interfaz.Salida;
-import java.util.Arrays;
+import java.util.*;
 //import org.apache.commons.lang.ArrayUtils; 
 
 /**
@@ -142,7 +140,9 @@ public class GestorDeDerramas {
                 System.out.println("Importe: " + d[numero - 1].getImporte() + " Tipo: " + d[numero - 1].getTipoDerrama() + " Nueva Descripción: " + d[numero - 1].getDescripcion() + " ");
                 break;
             case 4:
-                
+                d[numero-1].setImporte(0);
+                d[numero-1].setTipoDerrama(' ');
+                d[numero-1].setDescripcion("");
                         
                 for (int i = 0; i < cont; i++) {
 
