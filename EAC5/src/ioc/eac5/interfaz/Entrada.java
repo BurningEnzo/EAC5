@@ -377,8 +377,6 @@ public class Entrada {
 
              case 1:
                 if (!importado) {
-
-
                     GestorDeDatos.tratarDatosGestoria();
                     importado = true;
                     System.out.println("Datos importados correctamente.\n");
@@ -389,56 +387,64 @@ public class Entrada {
                 }
            break;
             case 2:
-                if (importado) {
-                //int i;
+                Salida.cabeceraMenuCargos();
             for (Vecino datosVecino : GestorDeDatos.datosVecino) {
+                 System.out.print("-" + datosVecino.getCargo() + "\t: " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + " (" + datosVecino.getNombrePiso() + ")");
                 if (datosVecino.getCargo().equalsIgnoreCase("P") || datosVecino.getCargo().equalsIgnoreCase("V") || datosVecino.getCargo().equalsIgnoreCase("S")) {
-                System.out.print("-" + datosVecino.getCargo() + "\t: " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + " (" + datosVecino.getNombrePiso() + ")");
+                //System.out.println(" -CARGO-");
                 }
             }
-                }
                 break;
+                
                 case 3:
                 Salida.cabeceraMenuCargos();
-                if (importado) {
+        for (Vecino datosVecino : GestorDeDatos.datosVecino) {
+            // posSelec = posicioValida(posSelec, dadesPisos);
+            // posSortejades[i]=posSelec;
+            System.out.print("-" + datosVecino.getNombrePiso() + "\t(" + datosVecino.getCoeficiente() + "): " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + ")");
+            if (datosVecino.getPresencia().equalsIgnoreCase("N")) {
+                System.out.println(" -AUSENTE-");
+            }
+        }
+                break;
+                    case 4:
+                    Salida.cabeceraMenuCargos();
+                    if (importado) {
                     int i;
                     boolean preguntar = true;
 
                     System.out.print("Por favor, introduzca el cargo de la junta a modificar: ");
+                    System.out.println("[Presidente , Vicepresidente o Secretario]");
                     do {
-
-                        cargoElegido = teclado.nextLine();
-
-                        for (i = 0; i < GestorDeDatos.datosVecino.length; i++) {
-
-                            if (cargoElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getCargo())) {
-                                Salida.mostrarPropietario(cargoElegido, i);
-
-                                preguntar = false;
-
-                            }
-
-                        }
-
-                    } while (preguntar);
+                    
+                    cargoElegido = teclado.nextLine();
+                    
+                    for (i = 0; i < GestorDeDatos.datosVecino.length; i++) {
+                    
+                    if (cargoElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getCargo())) {
+                    Salida.mostrarPropietario(cargoElegido, i);
+                    
+                    preguntar = false;
+                    
+                }
+                    
+                }
+                    
+                } while (preguntar);
                     solicitarDatosModificacion(cargoElegido, i);
                 }
-                break;
-                case 4:
-                Salida.cabeceraMenuCargos();
-                break;
-            case 5:
-                Salida.cabeceraMenuCargos();
-                Salida.menuCargos();
-                break;
-            default:
-
-                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
-                
-                            }
-                
-        
+                    break;
+                    
+                    case 5:
+                    Salida.cabeceraMenuCargos();
+                    Salida.menuCargos();
+                    break;
+                    default:
+                    
+                    System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+                    
+                }
+            }
         }
-    }
 
 
