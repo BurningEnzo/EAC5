@@ -140,9 +140,14 @@ public class GestorDeDerramas {
                 System.out.println("Importe: " + d[numero - 1].getImporte() + " Tipo: " + d[numero - 1].getTipoDerrama() + " Nueva Descripción: " + d[numero - 1].getDescripcion() + " ");
                 break;
             case 4:
+
                 d[numero-1].setImporte(0);
                 d[numero-1].setTipoDerrama(' ');
                 d[numero-1].setDescripcion("");
+
+                //ANAIS
+               
+
                         
                 for (int i = 0; i < cont; i++) {
 
