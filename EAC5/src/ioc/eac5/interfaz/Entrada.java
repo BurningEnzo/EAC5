@@ -9,6 +9,11 @@ import java.util.Scanner;
 import ioc.eac5.gestor.GestorDeDatos;
 import ioc.eac5.derramas.GestorDeDerramas;
 
+import ioc.eac5.gestor.Vecino;
+
+
+
+
 /**
  *
  * @author Uri
@@ -368,52 +373,32 @@ public class Entrada {
         } while (!correcto);
 
         switch (opcion) {
-            case 1:
-                for (int a = 0; a < GestorDeDatos.datosVecino.length; a++) {
-                    if (GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("P")
-                            || GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("V")
-                            || GestorDeDatos.datosVecino[a].getCargo().equalsIgnoreCase("S")) {
-                        System.out.print("-" + GestorDeDatos.datosVecino[a].getCargo() + "\t: " + GestorDeDatos.datosVecino[a].getNombrePropietario() + " (" + GestorDeDatos.datosVecino[a].getTelefono() + " (" + GestorDeDatos.datosVecino[a].getNombrePiso() + ")");
-                    }
+         
+
+             case 1:
+                if (!importado) {
+
+
+                    GestorDeDatos.tratarDatosGestoria();
+                    importado = true;
+                    System.out.println("Datos importados correctamente.\n");
+                    Salida.menuCargos();
+                } else {
+                    System.out.println("Los datos ya han sido importados previamente.");
+                    Salida.menuCargos();
                 }
-
-                break;
-
+           break;
             case 2:
+                if (importado) {
                 int i;
-                boolean preguntar = true;
-                do {
-                    cargoElegido = teclado.nextLine();
-                    for (i = 0; i < GestorDeDatos.datosVecino.length; i++) {
-                        System.out.println("RENOVAR CARGOS DE LA JUNTA");
-                    }
-                    if (cargoElegido.equalsIgnoreCase(GestorDeDatos.datosVecino[i].getCargo())) {
-
-                    }
-                    break;
-                  case 3:
-                     char nuevoCargo;
-                System.out.print("Introduce el cargo a substituir ");
-
-                preguntar = true;
-                while (preguntar) {
-
-                    correcto = teclado.hasNext();
-                    if (correcto) {
-                        nuevoCargo = teclado.next().charAt(0);
-
-                        if (Character.toLowerCase(nuevoCargo) == 's') {
-                            GestorDeDatos.modificarCampo(identificador, opcion, "N");
-                        } else if (Character.toLowerCase(nuevaPresencia) == 'n') {
-                            GestorDeDatos.modificarCampo(identificador, opcion, "S");
-                        }
-
-                    }
-
-                    preguntar = false;
-
+            for (Vecino datosVecino : GestorDeDatos.datosVecino) {
+                if (datosVecino.getCargo().equalsIgnoreCase("P") || datosVecino.getCargo().equalsIgnoreCase("V") || datosVecino.getCargo().equalsIgnoreCase("S")) {
+                System.out.print("-" + datosVecino.getCargo() + "\t: " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + " (" + datosVecino.getNombrePiso() + ")");
+                }
+            }
                 }
                 break;
+
       
               
                 case 4:
@@ -426,6 +411,8 @@ public class Entrada {
                 
                             }
                 
+        
         }
     }
-}
+
+
