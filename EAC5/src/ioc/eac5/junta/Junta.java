@@ -46,8 +46,8 @@ public class Junta {
         System.out.println("-------------------------------------------------------------------------------------------------");
        int a;
        int cargoActual ;
-       String cargoActual[] GestorDeVecinos.datosVecino[a]getCargo;
-       for (i = 0; i < GestorDeVecinos.datosVecino.length; i++) {
+      // String cargoActual[] GestorDeVecinos.datosVecino[a]getCargo;
+       for (int i=0;i< GestorDeVecinos.datosVecino.length;i++) {
        if (GestorDeVecinos.datosVecino[a].getCargo() == SECRETARIO ){
       // String cargoActual = cargo[i];
        for (i= cargoActual)
