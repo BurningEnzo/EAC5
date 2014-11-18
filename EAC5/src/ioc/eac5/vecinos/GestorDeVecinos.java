@@ -68,7 +68,7 @@ public class GestorDeVecinos {
             //datosVecino[i].nombrePropietario = almacenDatosVecino[2].trim();
             datosVecino[i].setNombrePropietario(almacenDatosVecino[2].trim());
             //datosVecino[i].telefono = almacenDatosVecino[3].trim();
-            datosVecino[i].setTelefono(Integer.parseInt(almacenDatosVecino[3].trim()));
+            datosVecino[i].setTelefono(almacenDatosVecino[3].trim());
             //datosVecino[i].presencia = almacenDatosVecino[4].trim();
             datosVecino[i].setPresencia(almacenDatosVecino[4].trim().charAt(0));
             //datosVecino[i].coeficiente = almacenDatosVecino[5].trim();
@@ -306,15 +306,15 @@ public class GestorDeVecinos {
 
             case 2:
 
-                int nuevoTelefono = 0;
+                String nuevoTelefono = "";
                 System.out.print("Por favor, introduzca el nuevo teléfono: ");
                 correcto = false;
 
                 do {
 
-                    correcto = teclado.hasNextInt();
+                    correcto = teclado.hasNext();
                     if (correcto) {
-                        nuevoTelefono = teclado.nextInt();
+                        nuevoTelefono = teclado.nextLine();
 
                     } else {
                         System.out.println("Por favor, introduzca una opción válida");

@@ -72,13 +72,22 @@ public class Menu {
 
                 break;
             case 2:
-                cabeceraMenuDerramas();
-                menuDerramas();
-
+                if (importado) {
+                    cabeceraMenuDerramas();
+                    menuDerramas();
+                } else {
+                    System.out.println("\n-------------------------------Por favor, introduzca los datos de gestoría primero.------------------------------------");
+                }
+                menuPrincipal();
                 break;
             case 3:
-                cabeceraMenuCargos();
-                menuCargos();
+                if (importado) {
+                    cabeceraMenuCargos();
+                    menuCargos();
+                } else {
+                    System.out.println("\n-------------------------------Por favor, introduzca los datos de gestoría primero.------------------------------------");
+                }
+                menuPrincipal();
                 break;
 
             case 4:
@@ -86,7 +95,7 @@ public class Menu {
                 break;
             default:
 
-                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+                System.out.println("\n-------------------------------Por favor, introduzca los datos de gestoría primero.------------------------------------");
                 menuPrincipal();
                 break;
         }
@@ -285,49 +294,49 @@ public class Menu {
 
             case 1:
 
-               /* for (Vecino datosVecino : GestorDeVecinos.datosVecino) {
-                    System.out.print("-" + datosVecino.getCargo() + "\t: " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + " (" + datosVecino.getNombrePiso() + ")");
-                    if (datosVecino.getCargo().equalsIgnoreCase("P") || datosVecino.getCargo().equalsIgnoreCase("V") || datosVecino.getCargo().equalsIgnoreCase("S")) {
-                        //System.out.println(" -CARGO-");
-                    }
-                }*/
+                /* for (Vecino datosVecino : GestorDeVecinos.datosVecino) {
+                 System.out.print("-" + datosVecino.getCargo() + "\t: " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + " (" + datosVecino.getNombrePiso() + ")");
+                 if (datosVecino.getCargo().equalsIgnoreCase("P") || datosVecino.getCargo().equalsIgnoreCase("V") || datosVecino.getCargo().equalsIgnoreCase("S")) {
+                 //System.out.println(" -CARGO-");
+                 }
+                 }*/
                 break;
 
             case 2:
 
                 /*for (Vecino datosVecino : GestorDeVecinos.datosVecino) {
-                    // posSelec = posicioValida(posSelec, dadesPisos);
-                    // posSortejades[i]=posSelec;
-                    System.out.print("-" + datosVecino.getNombrePiso() + "\t(" + datosVecino.getCoeficiente() + "): " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + ")");
-                    if (datosVecino.getPresencia().equalsIgnoreCase("N")) {
-                    }
-                }*/
+                 // posSelec = posicioValida(posSelec, dadesPisos);
+                 // posSortejades[i]=posSelec;
+                 System.out.print("-" + datosVecino.getNombrePiso() + "\t(" + datosVecino.getCoeficiente() + "): " + datosVecino.getNombrePropietario() + " (" + datosVecino.getTelefono() + ")");
+                 if (datosVecino.getPresencia().equalsIgnoreCase("N")) {
+                 }
+                 }*/
                 break;
             case 3:
-/*
-                int i;
-                boolean preguntar = true;
-                String cargoElegido="";
-                System.out.print("Por favor, introduzca el cargo de la junta a modificar: ");
-                System.out.println("[Presidente , Vicepresidente o Secretario]");
-                do {
+                /*
+                 int i;
+                 boolean preguntar = true;
+                 String cargoElegido="";
+                 System.out.print("Por favor, introduzca el cargo de la junta a modificar: ");
+                 System.out.println("[Presidente , Vicepresidente o Secretario]");
+                 do {
 
-                    cargoElegido = teclado.nextLine();
+                 cargoElegido = teclado.nextLine();
 
-                    for (i = 0; i < GestorDeVecinos.datosVecino.length; i++) {
+                 for (i = 0; i < GestorDeVecinos.datosVecino.length; i++) {
 
-                        if (cargoElegido.equalsIgnoreCase(GestorDeVecinos.datosVecino[i].getCargo())) {
-                            Salida.mostrarPropietario(cargoElegido, i);
+                 if (cargoElegido.equalsIgnoreCase(GestorDeVecinos.datosVecino[i].getCargo())) {
+                 Salida.mostrarPropietario(cargoElegido, i);
 
-                            preguntar = false;
+                 preguntar = false;
 
-                        }
+                 }
 
-                    }
+                 }
 
-                } while (preguntar);
-                GestorDeVecinos.solicitarDatosModificacion(cargoElegido, i);
-*/
+                 } while (preguntar);
+                 GestorDeVecinos.solicitarDatosModificacion(cargoElegido, i);
+                 */
                 break;
             case 4:
                 cabeceraMenuCargos();

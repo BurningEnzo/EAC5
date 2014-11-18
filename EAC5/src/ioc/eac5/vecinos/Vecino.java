@@ -14,7 +14,7 @@ public class Vecino {
     private String identificador;
     private String nombrePiso;
     private String nombrePropietario;
-    private int telefono;
+    private String telefono;
     private char presencia; //N -> ausente, S -> presente
     private double coeficiente;
     private int tipoC; //0 -> exento, 1 -> no exento
@@ -45,11 +45,11 @@ public class Vecino {
         this.nombrePropietario=nombrePropietario;
     }
     
-    public int getTelefono(){
+    public String getTelefono(){
         return telefono;
     }
     
-    public void setTelefono(int telefono){
+    public void setTelefono(String telefono){
         this.telefono=telefono;
     }
     
