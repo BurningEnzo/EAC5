@@ -12,7 +12,6 @@ import ioc.eac5.interfaz.Menu;
 //import ioc.eac5.interfaz.Salida;
 //import java.util.*;
 
-
 /**
  *
  * @author Lorenzo
@@ -45,7 +44,7 @@ public class GestorDeDerramas {
                 System.out.println("Ingrese la descripción:");
                 leer.nextLine();
                 descripcion = leer.nextLine();
-                
+
                 d[cont].setImporte(importe);
                 d[cont].setTipoDerrama(tipo);
                 d[cont].setDescripcion(descripcion);
@@ -54,7 +53,7 @@ public class GestorDeDerramas {
                 añadirDerrama();
                 break;
             case 2:
-                Menu.cabeceraMenuDerramas();               
+                Menu.cabeceraMenuDerramas();
                 Menu.menuDerramas();
                 break;
         }
@@ -63,47 +62,71 @@ public class GestorDeDerramas {
 
     public static void listarDerrama() {
         for (int i = 0; i < cont; i++) {
-            System.out.println("#["+(i+1)+"] Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
-            
+            System.out.println("#" + (i + 1) + " Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
+
         }
     }
 
     public void tipoDerrama() {
+
+        double pagarA = 0;
+        double pagarB = 0;
+        double pagarC = 0;
+
         for (int i = 0; i < cont; i++) {
             if (d[i].getTipoDerrama() == 'a' || d[i].getTipoDerrama() == 'A') {
-                System.out.println("Tipo A");
+                //System.out.println("Tipo A");
                 //gestor.tratarDatosGestoria();
                 for (int j = 0; j < GestorDeVecinos.datosVecino.length; j++) {
                     double pagar = GestorDeVecinos.datosVecino[j].getCoeficiente();
-                    double pagarA = (d[i].getImporte() / pagar) / 100;
-                    pagarA = Math.round(pagarA);
-                    System.out.println(GestorDeVecinos.datosVecino[j].getNombrePiso() + " con coeficiente " + GestorDeVecinos.datosVecino[j].getCoeficiente() + " debe pagar " + pagarA);
+                    pagarA = d[i].getImporte() * pagar;
+                    //pagarA = Math.round(pagarA);
+                    //System.out.println(GestorDeVecinos.datosVecino[j].getNombrePiso() + " con coeficiente " + GestorDeVecinos.datosVecino[j].getCoeficiente() + " debe pagar " + pagarA);
+                    GestorDeVecinos.datosVecino[j].setGastosTipoA(pagarA);
                 }
-            } else if (d[i].getTipoDerrama() == 'b') {
-                System.out.println("Tipo B");
+            } else if (d[i].getTipoDerrama() == 'b' || d[i].getTipoDerrama() == 'B') {
+                //System.out.println("Tipo B");
                 for (int k = 0; k < GestorDeVecinos.datosVecino.length; k++) {
-                    System.out.print(GestorDeVecinos.datosVecino[k].getIdentificador() + " " + GestorDeVecinos.datosVecino[k].getNombrePiso() + " " + GestorDeVecinos.datosVecino[k].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[k].getPresencia() + " " + GestorDeVecinos.datosVecino[k].getTelefono() + " " + GestorDeVecinos.datosVecino[k].getTipoC() + "\n");
+                    //System.out.print(GestorDeVecinos.datosVecino[k].getIdentificador() + " " + GestorDeVecinos.datosVecino[k].getNombrePiso() + " " + GestorDeVecinos.datosVecino[k].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[k].getPresencia() + " " + GestorDeVecinos.datosVecino[k].getTelefono() + " " + GestorDeVecinos.datosVecino[k].getTipoC() + "\n");
 
                 }
-                System.out.println("\n------------------------------------------------------------------");
-                double pagarB = d[i].getImporte() / vecinos;
-                System.out.println("Cada vecino debe abonar: " + pagarB + "€");
-
-            } else if (d[i].getTipoDerrama() == 'c') {
-                System.out.println("Tipo C");
+                //System.out.println("\n------------------------------------------------------------------");
+                pagarB = d[i].getImporte() / vecinos;
+                //System.out.println("Cada vecino debe abonar: " + pagarB + "€");
+                GestorDeVecinos.datosVecino[i].setGastosTipoB(pagarB);
+            } else if (d[i].getTipoDerrama() == 'c' || d[i].getTipoDerrama() == 'C') {
+                //System.out.println("Tipo C");
+                int contadorC = 0;
                 for (int l = 0; l < GestorDeVecinos.datosVecino.length; l++) {
-                    tipoC = GestorDeVecinos.datosVecino[l].getTipoC();
-                    if (tipoC == 1) {
-                        double pagarC = d[i].getImporte() / vecinos;
-                        System.out.print(GestorDeVecinos.datosVecino[l].getIdentificador() + " " + GestorDeVecinos.datosVecino[l].getNombrePiso() + " " + GestorDeVecinos.datosVecino[l].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[l].getPresencia() + " " + GestorDeVecinos.datosVecino[l].getTelefono() + " " + GestorDeVecinos.datosVecino[l].getTipoC() + " debe abonar " + pagarC + "€\n");
-                    } else {
-                        System.out.print(GestorDeVecinos.datosVecino[l].getIdentificador() + " " + GestorDeVecinos.datosVecino[l].getNombrePiso() + " " + GestorDeVecinos.datosVecino[l].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[l].getPresencia() + " " + GestorDeVecinos.datosVecino[l].getTelefono() + " " + GestorDeVecinos.datosVecino[l].getTipoC() + " EXEMPT\n");
+
+                    //     tipoC = GestorDeVecinos.datosVecino[l].getTipoC();
+                    if (GestorDeVecinos.datosVecino[l].getTipoC() == 1) {
+                        contadorC = contadorC + 1;
+
+                        // System.out.print(GestorDeVecinos.datosVecino[l].getIdentificador() + " " + GestorDeVecinos.datosVecino[l].getNombrePiso() + " " + GestorDeVecinos.datosVecino[l].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[l].getPresencia() + " " + GestorDeVecinos.datosVecino[l].getTelefono() + " " + GestorDeVecinos.datosVecino[l].getTipoC() + " debe abonar " + pagarC + "€\n");
+                    }
+
+// else {
+                    // System.out.print(GestorDeVecinos.datosVecino[l].getIdentificador() + " " + GestorDeVecinos.datosVecino[l].getNombrePiso() + " " + GestorDeVecinos.datosVecino[l].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[l].getPresencia() + " " + GestorDeVecinos.datosVecino[l].getTelefono() + " " + GestorDeVecinos.datosVecino[l].getTipoC() + " EXEMPT\n");
+                    // }
+                }
+                double gastosC = d[i].getImporte() / contadorC;
+                for (int w = 0; w < GestorDeVecinos.datosVecino.length; w++) {
+                    if (GestorDeVecinos.datosVecino[w].getTipoC() == 1) {
+                        GestorDeVecinos.datosVecino[w].setGastosTipoC(pagarC);
                     }
                 }
-
             }
+
         }
 
+        System.out.println("\n Relación de gastos detallados por propietario: ");
+        System.out.println("---------------------------------------------------");
+        for (int i = 0; i < GestorDeVecinos.datosVecino.length; i++) {
+            System.out.println("-" + GestorDeVecinos.datosVecino[i].getNombrePiso()+": "+(GestorDeVecinos.datosVecino[i].getGastosTipoA() + GestorDeVecinos.datosVecino[i].getGastosTipoB() + GestorDeVecinos.datosVecino[i].getGastosTipoC()));
+        
+
+        }
     }
 
     public void modificarDerramas() {
@@ -142,15 +165,12 @@ public class GestorDeDerramas {
                 break;
             case 4:
 
-                d[numero-1].setImporte(0);
-                d[numero-1].setTipoDerrama(' ');
-                d[numero-1].setDescripcion("");
+                d[numero - 1].setImporte(0);
+                d[numero - 1].setTipoDerrama(' ');
+                d[numero - 1].setDescripcion("");
 
                 //ANAIS
                 //funciona?
-               
-
-                        
                 for (int i = 0; i < cont; i++) {
 
                     System.out.println("Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
