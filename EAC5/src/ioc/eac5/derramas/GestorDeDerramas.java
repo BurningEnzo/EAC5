@@ -8,6 +8,7 @@ package ioc.eac5.derramas;
 import java.util.Scanner;
 import ioc.eac5.vecinos.GestorDeVecinos;
 import ioc.eac5.interfaz.Menu;
+import ioc.eac5.derramas.Derrama;
 //import ioc.eac5.interfaz.Entrada;
 //import ioc.eac5.interfaz.Salida;
 //import java.util.*;
@@ -61,9 +62,14 @@ public class GestorDeDerramas {
     }
 
     public static void listarDerrama() {
-        for (int i = 0; i < cont; i++) {
-            System.out.println("#" + (i + 1) + " Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
 
+        if (cont > 0) {
+            for (int i = 0; i < cont; i++) {
+                System.out.println("#" + (i + 1) + " Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
+
+            }
+        } else {
+            System.out.println("No existen presupuestos");
         }
     }
 
@@ -123,8 +129,7 @@ public class GestorDeDerramas {
         System.out.println("\n Relación de gastos detallados por propietario: ");
         System.out.println("---------------------------------------------------");
         for (int i = 0; i < GestorDeVecinos.datosVecino.length; i++) {
-            System.out.println("-" + GestorDeVecinos.datosVecino[i].getNombrePiso()+": "+(GestorDeVecinos.datosVecino[i].getGastosTipoA() + GestorDeVecinos.datosVecino[i].getGastosTipoB() + GestorDeVecinos.datosVecino[i].getGastosTipoC()));
-        
+            System.out.println("-" + GestorDeVecinos.datosVecino[i].getNombrePiso() + ": " + (GestorDeVecinos.datosVecino[i].getGastosTipoA() + GestorDeVecinos.datosVecino[i].getGastosTipoB() + GestorDeVecinos.datosVecino[i].getGastosTipoC()));
 
         }
     }
@@ -132,12 +137,7 @@ public class GestorDeDerramas {
     public void modificarDerramas() {
         int numero = 0;
         int Mopcion = 0;
-        for (int i = 0; i < cont; i++) {
-            if (d[i].getImporte() >= 0) {
-                System.out.println("Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + " ");
-            }
-
-        }
+        listarDerrama();
         System.out.println("Introduzca el numero de presupuesto el cual desea modificar: ");
         numero = leer.nextInt();
         System.out.println("Modificación a realizar\n------------------------\n1) Modificar Importe\n2) Modificar tipo\n3) Modificar descripción\n4) Eliminar presupuesto");
@@ -159,25 +159,62 @@ public class GestorDeDerramas {
                 break;
             case 3:
                 System.out.println(" Introduce la nueva descripción:");
-                String nuevoDesc = leer.next();
+                String nuevoDesc = leer.nextLine();
                 d[numero - 1].setDescripcion(nuevoDesc);
                 System.out.println("Importe: " + d[numero - 1].getImporte() + " Tipo: " + d[numero - 1].getTipoDerrama() + " Nueva Descripción: " + d[numero - 1].getDescripcion() + " ");
                 break;
             case 4:
+                System.out.print(" Seleccione el presupuesto a eliminar: ");
 
-                d[numero - 1].setImporte(0);
-                d[numero - 1].setTipoDerrama(' ');
-                d[numero - 1].setDescripcion("");
+                boolean correcto = false;
 
-                //ANAIS
-                //funciona?
-                for (int i = 0; i < cont; i++) {
+                do {
+                    correcto = leer.hasNextInt();
+                    if (correcto) {
+                        int numeroABorrar = leer.nextInt();
+                        if (numeroABorrar >= 0 && numeroABorrar <= d.length) {
+                            d = borrarDerrama(d, numeroABorrar - 1);
+                            cont--;
+                        } else {
+                            System.out.println("El presupuesto indicado no existe.");
+                        }
+                    }
+                } while (!correcto);
 
-                    System.out.println("Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
-                }
                 break;
 
         }
 
+    }
+
+    /**
+     *
+     * @param array
+     * @param pos
+     * @return
+     */
+    public Derrama[] borrarDerrama(Derrama[] array, int pos) {
+        if ((pos >= 0) && (pos < array.length)) {
+            Derrama[] nuevoD = new Derrama[array.length - 1];
+            copiarNPosiciones(array, nuevoD, pos);
+            for (int i = pos + 1; i < array.length; i++) {
+                nuevoD[i - 1] = array[i];
+            }
+            return nuevoD;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     *
+     * @param origen
+     * @param destino
+     * @param n
+     */
+    public void copiarNPosiciones(Derrama[] origen, Derrama[] destino, int n) {
+        for (int i = 0; i < n; i++) {
+            destino[i] = origen[i];
+        }
     }
 }
