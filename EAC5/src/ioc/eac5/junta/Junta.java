@@ -50,7 +50,7 @@ public class Junta {
        for (int i=0;i< GestorDeVecinos.datosVecino.length;i++) {
        if (GestorDeVecinos.datosVecino[a].getCargo() == SECRETARIO ){
       // String cargoActual = cargo[i];
-       for (i= cargoActual)
+       for (int i=0;<cargoActual){
        if (GestorDeVecinos.datosVecino[a].getPresencia() == VIVE ){                     
                           }else{if (GestorDeVecinos.datosVecino[a].getPresencia() == VIVE ){                     
                           }else{
