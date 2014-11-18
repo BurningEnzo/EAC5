@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ioc.eac5.gestor;
+package ioc.eac5.vecinos;
 
 /**
  * Clase que gestiona todos y cada uno de los datos relacionados con cada vecino
@@ -14,11 +14,11 @@ public class Vecino {
     private String identificador;
     private String nombrePiso;
     private String nombrePropietario;
-    private String telefono;
-    private String presencia; //N -> ausente, S -> presente
-    private String coeficiente;
-    private String tipoC; //0 -> exento, 1 -> no exento
-    private String cargo; //Cargo que ocupa en la junta
+    private int telefono;
+    private char presencia; //N -> ausente, S -> presente
+    private double coeficiente;
+    private int tipoC; //0 -> exento, 1 -> no exento
+    private char cargo; //Cargo que ocupa en la junta
     
     //Métodos para acceder y modificar los datos de Vecino
     public String getIdentificador(){
@@ -45,43 +45,43 @@ public class Vecino {
         this.nombrePropietario=nombrePropietario;
     }
     
-    public String getTelefono(){
+    public int getTelefono(){
         return telefono;
     }
     
-    public void setTelefono(String telefono){
+    public void setTelefono(int telefono){
         this.telefono=telefono;
     }
     
-    public String getPresencia(){
+    public char getPresencia(){
         return presencia;
     }
     
-    public void setPresencia(String presencia){
+    public void setPresencia(char presencia){
         this.presencia=presencia;
     }
     
-    public String getCoeficiente(){
+    public double getCoeficiente(){
         return coeficiente;
     }
     
-    public void setCoeficiente(String coeficiente){
+    public void setCoeficiente(double coeficiente){
         this.coeficiente=coeficiente;
     }
     
-    public String getTipoC(){
+    public int getTipoC(){
         return tipoC;
     }
     
-    public void setTipoC(String tipoC){
+    public void setTipoC(int tipoC){
         this.tipoC=tipoC;
     }
     
-    public String getCargo(){
+    public char getCargo(){
         return cargo;
     }
     
-    public void setCargo(String cargo){
+    public void setCargo(char cargo){
         this.cargo=cargo;
     }
         

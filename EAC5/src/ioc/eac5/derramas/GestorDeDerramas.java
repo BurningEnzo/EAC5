@@ -6,10 +6,11 @@
 package ioc.eac5.derramas;
 
 import java.util.Scanner;
-import ioc.eac5.gestor.GestorDeDatos;
-import ioc.eac5.interfaz.Entrada;
-import ioc.eac5.interfaz.Salida;
-import java.util.*;
+import ioc.eac5.vecinos.GestorDeVecinos;
+import ioc.eac5.interfaz.Menu;
+//import ioc.eac5.interfaz.Entrada;
+//import ioc.eac5.interfaz.Salida;
+//import java.util.*;
 
 
 /**
@@ -19,8 +20,8 @@ import java.util.*;
 public class GestorDeDerramas {
 
     Scanner leer = new Scanner(System.in);
-    Salida salida = new Salida();
-    GestorDeDatos gestor = new GestorDeDatos();
+    //Salida salida = new Salida();
+    GestorDeVecinos GestorDeVecinos = new GestorDeVecinos();
     Double importe = 0.0;
     char tipo = ' ';
     String descripcion = " ";
@@ -28,7 +29,7 @@ public class GestorDeDerramas {
     int opcion = 0;
     int vecinos = 25;
     int tipoC = 0;
-    Derramas[] d = new Derramas[20];
+    static Derrama[] d = new Derrama[20];
 
     public void añadirDerrama() {
 
@@ -36,33 +37,33 @@ public class GestorDeDerramas {
         opcion = leer.nextInt();
         switch (opcion) {
             case 1:
-                d[cont] = new Derramas();
+                d[cont] = new Derrama();
                 System.out.println("Ingrese el importe:");
                 importe = leer.nextDouble();
                 System.out.println("Ingrese el tipo:");
                 tipo = leer.next().charAt(0);
                 System.out.println("Ingrese la descripción:");
-                descripcion = leer.next();
                 leer.nextLine();
+                descripcion = leer.nextLine();
+                
                 d[cont].setImporte(importe);
                 d[cont].setTipoDerrama(tipo);
                 d[cont].setDescripcion(descripcion);
                 cont++;
-                salida.cabeceraMenuDerramas();
+                listarDerrama();
                 añadirDerrama();
                 break;
             case 2:
-                salida.cabeceraMenuDerramas();
-                
-                salida.menuDerramas();
+                Menu.cabeceraMenuDerramas();               
+                Menu.menuDerramas();
                 break;
         }
 
     }
 
-    public void listarDerrama() {
+    public static void listarDerrama() {
         for (int i = 0; i < cont; i++) {
-            System.out.println("Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
+            System.out.println("#["+(i+1)+"] Importe: " + d[i].getImporte() + " Tipo: " + d[i].getTipoDerrama() + " Descripción: " + d[i].getDescripcion() + "");
             
         }
     }
@@ -71,17 +72,17 @@ public class GestorDeDerramas {
         for (int i = 0; i < cont; i++) {
             if (d[i].getTipoDerrama() == 'a') {
                 System.out.println("Tipo A");
-                gestor.tratarDatosGestoria();
-                for (int j = 0; j < gestor.datosVecino.length; j++) {
-                    double pagar = Double.parseDouble(gestor.datosVecino[j].getCoeficiente());
+                //gestor.tratarDatosGestoria();
+                for (int j = 0; j < GestorDeVecinos.datosVecino.length; j++) {
+                    double pagar = GestorDeVecinos.datosVecino[j].getCoeficiente();
                     double pagarA = (d[i].getImporte() / pagar) / 100;
                     pagarA = Math.round(pagarA);
-                    System.out.println(gestor.datosVecino[j].getNombrePiso() + " con coeficiente " + gestor.datosVecino[j].getCoeficiente() + " debe pagar " + pagarA);
+                    System.out.println(GestorDeVecinos.datosVecino[j].getNombrePiso() + " con coeficiente " + GestorDeVecinos.datosVecino[j].getCoeficiente() + " debe pagar " + pagarA);
                 }
             } else if (d[i].getTipoDerrama() == 'b') {
                 System.out.println("Tipo B");
-                for (int k = 0; k < gestor.datosVecino.length; k++) {
-                    System.out.print(gestor.datosVecino[k].getIdentificador() + " " + gestor.datosVecino[k].getNombrePiso() + " " + gestor.datosVecino[k].getNombrePropietario() + " " + gestor.datosVecino[k].getPresencia() + " " + gestor.datosVecino[k].getTelefono() + " " + gestor.datosVecino[k].getTipoC() + "\n");
+                for (int k = 0; k < GestorDeVecinos.datosVecino.length; k++) {
+                    System.out.print(GestorDeVecinos.datosVecino[k].getIdentificador() + " " + GestorDeVecinos.datosVecino[k].getNombrePiso() + " " + GestorDeVecinos.datosVecino[k].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[k].getPresencia() + " " + GestorDeVecinos.datosVecino[k].getTelefono() + " " + GestorDeVecinos.datosVecino[k].getTipoC() + "\n");
 
                 }
                 System.out.println("\n------------------------------------------------------------------");
@@ -90,13 +91,13 @@ public class GestorDeDerramas {
 
             } else if (d[i].getTipoDerrama() == 'c') {
                 System.out.println("Tipo C");
-                for (int l = 0; l < gestor.datosVecino.length; l++) {
-                    tipoC = Integer.parseInt(gestor.datosVecino[l].getTipoC());
+                for (int l = 0; l < GestorDeVecinos.datosVecino.length; l++) {
+                    tipoC = GestorDeVecinos.datosVecino[l].getTipoC();
                     if (tipoC == 1) {
                         double pagarC = d[i].getImporte() / vecinos;
-                        System.out.print(gestor.datosVecino[l].getIdentificador() + " " + gestor.datosVecino[l].getNombrePiso() + " " + gestor.datosVecino[l].getNombrePropietario() + " " + gestor.datosVecino[l].getPresencia() + " " + gestor.datosVecino[l].getTelefono() + " " + gestor.datosVecino[l].getTipoC() + " debe abonar " + pagarC + "€\n");
+                        System.out.print(GestorDeVecinos.datosVecino[l].getIdentificador() + " " + GestorDeVecinos.datosVecino[l].getNombrePiso() + " " + GestorDeVecinos.datosVecino[l].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[l].getPresencia() + " " + GestorDeVecinos.datosVecino[l].getTelefono() + " " + GestorDeVecinos.datosVecino[l].getTipoC() + " debe abonar " + pagarC + "€\n");
                     } else {
-                        System.out.print(gestor.datosVecino[l].getIdentificador() + " " + gestor.datosVecino[l].getNombrePiso() + " " + gestor.datosVecino[l].getNombrePropietario() + " " + gestor.datosVecino[l].getPresencia() + " " + gestor.datosVecino[l].getTelefono() + " " + gestor.datosVecino[l].getTipoC() + " EXEMPT\n");
+                        System.out.print(GestorDeVecinos.datosVecino[l].getIdentificador() + " " + GestorDeVecinos.datosVecino[l].getNombrePiso() + " " + GestorDeVecinos.datosVecino[l].getNombrePropietario() + " " + GestorDeVecinos.datosVecino[l].getPresencia() + " " + GestorDeVecinos.datosVecino[l].getTelefono() + " " + GestorDeVecinos.datosVecino[l].getTipoC() + " EXEMPT\n");
                     }
                 }
 

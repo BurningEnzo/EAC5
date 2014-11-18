@@ -10,14 +10,14 @@ package ioc.eac5.derramas;
  *
  * @author Uri
  */
-public class Derramas {
+public class Derrama {
 
     private double importe;
     private String descripcion;
 
     private char tipoDerrama;
 
-    //Métodos para acceder y modificar los datos de Derramas
+    //Métodos para acceder y modificar los datos de Derrama
     public double getImporte() {
         return importe;
     }

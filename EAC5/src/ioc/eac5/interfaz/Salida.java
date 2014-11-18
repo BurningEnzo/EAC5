@@ -1,8 +1,3 @@
-
-
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,9 +6,8 @@
 package ioc.eac5.interfaz;
 
 import java.util.Scanner;
-import ioc.eac5.gestor.GestorDeDatos;
+import ioc.eac5.vecinos.GestorDeVecinos;
 import ioc.eac5.junta.Junta;
-
 
 /**
  *
@@ -21,14 +15,19 @@ import ioc.eac5.junta.Junta;
  */
 public class Salida {
 
+   /* static Scanner teclado = new Scanner(System.in);
     static Entrada solicitar = new Entrada();
 
-    Scanner teclado = new Scanner(System.in);
     Junta junta = new Junta();
-    //static GestorDeDatos gestor = new GestorDeDatos();
+    //static GestorDeVecinos gestor = new GestorDeVecinos();
 
-    int opcion;
-
+    static int opcion;
+    static boolean correcto;
+    static boolean importado;
+    static String identificadorElegido;
+    
+    
+    
     public static void bienvenida() {
 
         System.out.println("Bienvenido/a al programa de gestión de la comunidad\n"
@@ -44,7 +43,7 @@ public class Salida {
 
     public static void menuPrincipal() {
 
-        System.out.println("-----------------------------------------------");
+        System.out.println("\n-----------------------------------------------");
         System.out.println("                Menú principal");
         System.out.println("-----------------------------------------------");
         System.out.println("1) Gestión de propietarios");
@@ -53,8 +52,45 @@ public class Salida {
         System.out.println("4) Salir del programa");
         System.out.println("-----------------------------------------------");
         System.out.print("Por favor, seleccione una opción: ");
-        solicitar.opcionesMenuPrincipal();
+        //solicitar.opcionesMenuPrincipal();
+        correcto = false;
 
+        do {
+            correcto = teclado.hasNextInt();
+            if (correcto) {
+                opcion = teclado.nextInt();
+
+            } else {
+                System.out.println("Por favor, introduzca una opción válida");
+                teclado.next();
+            }
+        } while (!correcto);
+
+        switch (opcion) {
+            case 1:
+                Salida.cabeceraMenuPropietarios();
+                Salida.menuPropietarios();
+
+                break;
+            case 2:
+                Salida.cabeceraMenuDerramas();
+                Salida.menuDerramas();
+
+                break;
+            case 3:
+                Salida.cabeceraMenuCargos();
+                Salida.menuCargos();
+                break;
+
+            case 4:
+                Salida.despedida();
+                break;
+            default:
+
+                System.out.println("Opción no válida. Por favor, introduzca una opción válida.");
+                menuPrincipal();
+                break;
+        }
     }
 
     //Menús de: 1) Gestión de propietarios
@@ -72,25 +108,24 @@ public class Salida {
         System.out.println("4) Volver al menú anterior");
         System.out.print("\nPor favor, seleccione una opción: ");
         solicitar.opcionesMenuPropietarios();
-
     }
 
     public static void mostrarPropietario(String identificador, int i) {
         System.out.println("\n       Detalle de datos del propietario");
         System.out.println("-----------------------------------------------");
-        System.out.println(GestorDeDatos.datosVecino[i].getNombrePiso());
-        System.out.println("\t 1)Nombre del propietario: " + GestorDeDatos.datosVecino[i].getNombrePropietario());
-        System.out.println("\t 2)Teléfono: " + GestorDeDatos.datosVecino[i].getTelefono());
-        System.out.println("\t 3)Coeficiente: " + GestorDeDatos.datosVecino[i].getCoeficiente());
-        if (GestorDeDatos.datosVecino[i].getTipoC().equalsIgnoreCase("1")) {
+        System.out.println(GestorDeVecinos.datosVecino[i].getNombrePiso());
+        System.out.println("\t 1)Nombre del propietario: " + GestorDeVecinos.datosVecino[i].getNombrePropietario());
+        System.out.println("\t 2)Teléfono: " + GestorDeVecinos.datosVecino[i].getTelefono());
+        System.out.println("\t 3)Coeficiente: " + GestorDeVecinos.datosVecino[i].getCoeficiente());
+        if (GestorDeVecinos.datosVecino[i].getTipoC().equalsIgnoreCase("1")) {
             System.out.println("\t 4)¿Exento de gastos tipo C?: No");
-        } else if (GestorDeDatos.datosVecino[i].getTipoC().equalsIgnoreCase("0")) {
+        } else if (GestorDeVecinos.datosVecino[i].getTipoC().equalsIgnoreCase("0")) {
             System.out.println("\t 4)¿Exento de gastos tipo C?: Sí");
         }
 
-        if (GestorDeDatos.datosVecino[i].getPresencia().equalsIgnoreCase("N")) {
+        if (GestorDeVecinos.datosVecino[i].getPresencia().equalsIgnoreCase("N")) {
             System.out.println("\t 5)¿El propietario está ausente?: Sí");
-        } else if (GestorDeDatos.datosVecino[i].getPresencia().equalsIgnoreCase("S")) {
+        } else if (GestorDeVecinos.datosVecino[i].getPresencia().equalsIgnoreCase("S")) {
             System.out.println("\t 5)¿El propietario está ausente?: No");
         }
         System.out.println("\t 6)Cancelar");
@@ -123,15 +158,14 @@ public class Salida {
 
     }
 //Menús de: 3) Gestión de cargos
-    
+
     public static void cabeceraMenuCargos() {
         System.out.println("-----------------------------------------------");
         System.out.println("                   Cargos");
         System.out.println("-----------------------------------------------");
 
-
     }
-    
+
     public static void menuCargos() {
         System.out.println("1) Importar datos desde la gestoría");
         System.out.println("2) Listar la junta actual");
@@ -141,25 +175,23 @@ public class Salida {
         System.out.print("Por favor, seleccione una opción:");
         solicitar.opcionesMenuCargos();
     }
-   
-      public static void mostrarCargos(String identificador, int i) {
+
+    public static void mostrarCargos(String identificador, int i) {
         System.out.println("\n       Detalle de cargos de los propietario");
         System.out.println("-----------------------------------------------");
-        System.out.println(GestorDeDatos.datosVecino[i].getNombrePiso());
-        System.out.println("\t 1)Cargo: " + GestorDeDatos.datosVecino[i].getCargo());
-        System.out.println("\t 2)Nombre propietario: " + GestorDeDatos.datosVecino[i].getNombrePropietario());
-        System.out.println("\t 3)Teléfono: " + GestorDeDatos.datosVecino[i].getTelefono());
-        System.out.println("\t 4)Piso: " + GestorDeDatos.datosVecino[i].getNombrePiso());
-       if (GestorDeDatos.datosVecino[i].getCargo().equalsIgnoreCase("P")) {
-        }   if (GestorDeDatos.datosVecino[i].getCargo().equalsIgnoreCase("V")) {
-        }  if (GestorDeDatos.datosVecino[i].getCargo().equalsIgnoreCase("S")) {
-    }
-
+        System.out.println(GestorDeVecinos.datosVecino[i].getNombrePiso());
+        System.out.println("\t 1)Cargo: " + GestorDeVecinos.datosVecino[i].getCargo());
+        System.out.println("\t 2)Nombre propietario: " + GestorDeVecinos.datosVecino[i].getNombrePropietario());
+        System.out.println("\t 3)Teléfono: " + GestorDeVecinos.datosVecino[i].getTelefono());
+        System.out.println("\t 4)Piso: " + GestorDeVecinos.datosVecino[i].getNombrePiso());
+        if (GestorDeVecinos.datosVecino[i].getCargo().equalsIgnoreCase("P")) {
+        }
+        if (GestorDeVecinos.datosVecino[i].getCargo().equalsIgnoreCase("V")) {
+        }
+        if (GestorDeVecinos.datosVecino[i].getCargo().equalsIgnoreCase("S")) {
+        }
 
         System.out.println("Muchas gracias por usar nuestro programa.");
     }
+    */
 }
-
-      
-
-      

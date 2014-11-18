@@ -4,15 +4,13 @@
  * and open the template in the editor.
  */
 package ioc.eac5;
-import ioc.eac5.interfaz.Salida;
 
-import ioc.eac5.gestor.GestorDeDatos;
-import ioc.eac5.derramas.GestorDeDerramas;
+import ioc.eac5.interfaz.Menu;
 
-//import ioc.eac5.gestor.GestorDeDatos;
 
 /**
  * Clase principal que da inicio al programa
+ *
  * @author Lorenzo
  */
 public class Principal {
@@ -22,37 +20,15 @@ public class Principal {
      */
     public static void main(String[] args) {
 
+        Principal programa = new Principal();
 
-        GestorDeDatos prueba = new GestorDeDatos();
-        GestorDeDerramas  prueba1 = new GestorDeDerramas();
-        //Pruebas
-        //prueba.tratarDatosGestoria();
-        //imprimir.mostrarPropietario("LE", 0);
-        //prueba.mostrarListado(1);
-       // imprimir.bienvenida();
+        programa.inicio();
 
-
-        //Salida.menuPrincipal();
-        prueba1.añadirDerrama();
-        //prueba1.listarDerrama();
-        prueba1.modificarDerramas();
-        //prueba1.tipoDerrama();
-
-        //Salida.menuPrincipal();
-        //prueba1.añadirDerrama();
-        //prueba1.modificarDerramas();
-
-
-        //Salida.menuPrincipal();
-
-
-  
-
-    
     }
-    
-    
+
+    public void inicio() {
+        Menu.bienvenida();
+        Menu.menuPrincipal();        
+    }
 
 }
-
-
